@@ -5,6 +5,7 @@
     <title>Project Mango</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     </head>
     <body>
 		<div class="wrapper">
@@ -35,7 +36,15 @@
 			</div>
 			<div class="playControls">
 				<div class="playControlsInner">
-					<p align="center" style="margin-top: 15px;">Global controls coming soon.</p>
+					<div style="width: 40rem;">
+						<i id="backward" onclick="backward()" class="fa fa-step-backward fa-2x"></i>
+						<i id="playButton" onclick="play()" class="fa fa-play fa-2x"></i>
+						<i id="forward" onclick="foward()" class="fa fa-step-forward fa-2x"></i>
+						<div class="mediaProgressBarWrapper">
+							<div class="mediaProgressBarBackground"></div>
+							<div class="mediaProgressBar"></div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
