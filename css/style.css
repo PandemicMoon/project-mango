@@ -96,21 +96,23 @@ a {
 }
 
 /* ELEMENT STYLES */
-#container {
-	width: 40rem;
+.container
+{
 	margin: 0 auto;
+	width: 40rem;
 }
-header {
+.header {
 	background: rgba(255,255,255,0.94);
 	padding: 1.5rem 0rem;
 }
-footer {
+.footer {
 	width: inherit;
 	border-top: 1px solid #F5F5F5;
 	padding: 0.75rem 0;
-	position: fixed;
 	bottom: 0;
 	text-align: center;
+	position: fixed;
+	margin-bottom: 50px;
 }
 hr {
 	border: none;
@@ -225,4 +227,19 @@ button:hover {
 .group {
     zoom: 1; /* For IE 6/7 (trigger hasLayout) */
 }
+/* Project Mango CSS*/
+.playControls {
+	position: fixed;
+    bottom: 0;
+    width: 100%;
+	border-top: 1px solid #F5F5F5;
+	background: #FFE043;
+	height: 50px;
+}
+.playControlsInner
+{
+	margin: 0 auto;
+	width: 40rem;
+}
+
 
