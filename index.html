@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="UTF-8"/>
+    <title>Project Mango</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	
+	  ga('create', 'UA-72569643-1', 'auto');
+	  ga('send', 'pageview');
+    </script>
+    </head>
+    <body>
+		<div id="container">
+			<header>
+				<a href="http://hoonah.github.io/tunic"><h1 id="title">Project Mango</h1></a>
+				<input id="searchBox" name="search" spellcheck="false" placeholder="Play any songs (i.e. Peace Of Mind Boston)"></input>
+			</header>
+			<hr>
+			<div class="group">
+				<section id="current">
+					<h2>Currently playing:</h2>
+					<div id="player"></div>
+				</section>
+				<section id="next">
+					<h2>Up next:</h2>
+					<p>Press <strong>control</strong> to add the current song to the queue. Or, search a different song to add:
+						<input id="addBox" name="add" spellcheck="false" placeholder="Add any songs"></input>
+					</p>
+					<div id="queue-container">
+						<ul id="queue"></ul>
+					</div>
+				</section>
+			</div>
+			<footer>
+				<h6>Made By <a href="http://pandemic.feedopoly.com/">Pandemic Moon</a>, Adapted From <a href="http://hoonah.github.io/tunic">Tunic</a> By <a href="http://hoonah.github.io">William Song</a>.</h6>
+			</footer>
+		</div>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+		<script src="js/main.js"></script>
+		<script src="https://apis.google.com/js/client.js?onload=init"></script>
+  </body>
+</html>
