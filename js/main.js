@@ -168,7 +168,7 @@ function forward()
         playNextVideoInQueue();
     }
 }
-function backwards()
+function backward()
 {
 	player.seekTo(0, true);
 }
