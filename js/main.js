@@ -10,6 +10,7 @@ var publicAPIKey = 'AIzaSyBeTQ6HWplls742QA_bvODF-vPOFf4nm2U',
 	thumbnail = document.getElementById("thumbnail"),
 	timePassed = document.getElementById("timePassed"),
 	timeLeft = document.getElementById("timeLeft"),
+	mediaProgressBar = document.getElementById("mediaProgressBar"),
 	lastPlayerState,
 	timeChanger;
 	
@@ -198,7 +199,7 @@ function queueNext()
 	queue[0] = temp;
     liToBeQueuedNext.parent().prepend(liToBeQueuedNext);
 }
-function setTime(secPassed, secLeft)
+function setTime(secPassed, secTotal)
 {
 	var minPassed = Math.floor(secPassed / 60);
 	var secPassed = secPassed - (minPassed * 60);
@@ -206,11 +207,14 @@ function setTime(secPassed, secLeft)
 	if (timePassed.innerHTML != prettyPassed)
 	    timePassed.innerHTML = prettyPassed;
 	
-	var minLeft = Math.floor(secLeft / 60);
-	var secLeft = secLeft - (minLeft * 60);
-	var prettyLeft = str_pad_left(minLeft,'0',2)+':'+str_pad_left(secLeft,'0',2);
-	if (timePassed.innerHTML != prettyLeft)
-	    timeLeft.innerHTML = prettyLeft;
+	var minTotal = Math.floor(secTotal / 60);
+	var secTotal = secTotal - (minTotal * 60);
+	var prettyTotal = str_pad_left(minTotal,'0',2)+':'+str_pad_left(secTotal,'0',2);
+	if (timePassed.innerHTML != prettyTotal)
+	    timeTotal.innerHTML = prettyTotal;
+	
+	var percent = Math.round((100*secPassed)/secTotal);
+	mediaProgressBar.style.width = percent + "%";
 }
 function str_pad_left(string,pad,length) {
     return (new Array(length+1).join(pad)+string).slice(-length);
