@@ -38,8 +38,7 @@ function f()
 {
 	var currTime = Math.floor(player.getCurrentTime());
 	var dur = Math.floor(player.getDuration());
-	var left = dur-currTime;
-	setTime(currTime, left);
+	setTime(currTime, dur);
 }
 function onPlayerReady(event) {
     event.target.playVideo();
@@ -56,6 +55,8 @@ function onPlayerStateChange(event) {
         playNextVideoInQueue();
 		lastPlayerState = 1;
     }
+	
+	f();
 	
 	if (player.getPlayerState() != lastPlayerState)
 	{
@@ -202,12 +203,14 @@ function setTime(secPassed, secLeft)
 	var minPassed = Math.floor(secPassed / 60);
 	var secPassed = secPassed - (minPassed * 60);
 	var prettyPassed = str_pad_left(minPassed,'0',2)+':'+str_pad_left(secPassed,'0',2);
-	timePassed.innerHTML = prettyPassed;
+	if (timePassed.innerHTML != prettyPassed)
+	    timePassed.innerHTML = prettyPassed;
 	
 	var minLeft = Math.floor(secLeft / 60);
 	var secLeft = secLeft - (minLeft * 60);
 	var prettyLeft = str_pad_left(minLeft,'0',2)+':'+str_pad_left(secLeft,'0',2);
-	timeLeft.innerHTML = prettyLeft;
+	if (timePassed.innerHTML != prettyLeft)
+	    timeLeft.innerHTML = prettyLeft;
 }
 function str_pad_left(string,pad,length) {
     return (new Array(length+1).join(pad)+string).slice(-length);
