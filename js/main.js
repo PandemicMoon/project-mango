@@ -213,7 +213,7 @@ function setTime(secPassed, secTotal)
 	if (timePassed.innerHTML != prettyTotal)
 	    timeLeft.innerHTML = prettyTotal;
 	
-	var percent = Math.round((secPassed)/secTotal);
+	var percent = Math.round(100*(secPassed/secTotal));
 	mediaProgressBar.style.width = percent + "%";
 }
 function str_pad_left(string,pad,length) {
