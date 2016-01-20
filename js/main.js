@@ -11,7 +11,7 @@ var publicAPIKey = 'AIzaSyBeTQ6HWplls742QA_bvODF-vPOFf4nm2U',
 	lastPlayerState;
 	
 function onYouTubeIframeAPIReady() {
-    var initialVideoId = "ncIVUXZla8";
+    var initialVideoId = "-ncIVUXZla8";
     player = new YT.Player('player', {
         height: '205',
         width: '300',
