@@ -25,7 +25,7 @@ var publicAPIKey = 'AIzaSyBeTQ6HWplls742QA_bvODF-vPOFf4nm2U',
 		   onDrag: function()
 		   {
 				player.pauseVideo();
-		   }
+		   },
 		   doneDrag: function()
 		   {
 				player.playVideo();
