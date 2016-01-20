@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<script type="text/javascript" src="js/seekbar.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/seekbar.css"/>
     </head>
     <body>
 		<div class="wrapper">
@@ -44,8 +46,8 @@
 						<div style="display: inline-block; position: relative; top: 50%; transform: translateY(-50%);">
 							<p id="timePassed" style="display: inline; position: relative; top: 50%; transform: translateY(-50%);">00:00</p>
 						</div>
-						<div class="mediaProgressBarWrapper">
-							<div class="mediaProgressBarBackground"><div id="mediaProgressBar" class="mediaProgressBar"></div></div>
+						<div id="mediaProgressBarWrapper" class="mediaProgressBarWrapper">
+							<div id="seekbar-container-horizontal-red" style="width:50px;height:300px;float:left;margin-right:20px"></div>
 						</div>
 						<div style="display: inline-block; position: relative; top: 50%; transform: translateY(-50%);">
 							<p id="timeLeft" style="display: inline; position: relative; top: 50%; transform: translateY(-50%);">00:00</p>

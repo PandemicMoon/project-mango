@@ -10,10 +10,28 @@ var publicAPIKey = 'AIzaSyBeTQ6HWplls742QA_bvODF-vPOFf4nm2U',
 	thumbnail = document.getElementById("thumbnail"),
 	timePassed = document.getElementById("timePassed"),
 	timeLeft = document.getElementById("timeLeft"),
-	mediaProgressBar = document.getElementById("mediaProgressBar"),
 	lastPlayerState,
-	timeChanger;
-	
+	timeChanger,
+	slider = new Seekbar.Seekbar({
+           renderTo: "#seekbar-container-horizontal-red",
+           minValue: 0, maxValue: 255,
+           valueListener: function (value) {
+				updatePlayerTime(value);
+           },
+           thumbColor: '#D82020',
+           negativeColor: '#D82020',
+           positiveColor: '#CCC',
+           value: 0,
+		   onDrag: function()
+		   {
+				player.pauseVideo();
+		   }
+		   doneDrag: function()
+		   {
+				player.playVideo();
+		   }
+       });
+
 function onYouTubeIframeAPIReady() {
     var initialVideoId = "-ncIVUXZla8";
     player = new YT.Player('player', {
@@ -161,6 +179,21 @@ $(document).ready(function() {
     $(document).keydown(addCurrentlyPlayingVid);
     $('#queue').on('click', '#deleteButton', removeFromQueue);
 	$('#queue').on('click', '#queueNextButton', queueNext);
+	$("#mediaProgressBar").slider(
+    {
+        min: 0,
+        max: 100,
+        step: 1,
+        change: showValue
+
+    });
+    $("#update").click(function () {
+        $("#slider").slider("option", "value", $("#seekTo").val());
+
+    });
+    function showValue(event, ui) {
+        $("#val").html(ui.value);
+    }
 });
 function play()
 {
@@ -189,6 +222,7 @@ function forward()
 function backward()
 {
 	player.seekTo(0, true);
+	slider.setValue(0);
 }
 function queueNext()
 {
@@ -213,9 +247,13 @@ function setTime(secPassedOg, secTotalOg)
 	if (timePassed.innerHTML != prettyTotal)
 	    timeLeft.innerHTML = prettyTotal;
 	
-	var percent = 100*(secPassedOg/secTotalOg);
-	mediaProgressBar.style.width = percent + "%";
+	slider.setValue(secPassedOg);
 }
 function str_pad_left(string,pad,length) {
     return (new Array(length+1).join(pad)+string).slice(-length);
+}
+function updatePlayerTime(value)
+{
+	player.seekTo(value, true);
+	f();
 }
