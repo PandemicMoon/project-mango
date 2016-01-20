@@ -22,6 +22,7 @@ var publicAPIKey = 'AIzaSyBeTQ6HWplls742QA_bvODF-vPOFf4nm2U',
            negativeColor: '#D82020',
            positiveColor: '#CCC',
            value: 0,
+		   barSize: 1,
 		   onDrag: function()
 		   {
 				player.pauseVideo();
@@ -84,7 +85,7 @@ function onPlayerStateChange(event) {
             playButton.style.display = "none";
             pauseButton.style.display = "inline-block";
 			timeChanger = setInterval(f, 500);
-			slider.maxValue = player.getDuration();
+			slider.maxValue = Math.round(player.getDuration());
 	    }
 		else
 		{
