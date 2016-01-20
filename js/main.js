@@ -81,7 +81,7 @@ function addCurrentlyPlayingVid(e) {
     var playerVidThumbnail = '<img src = http://img.youtube.com/vi/'+playerVidId+'/0.jpg>';
     if (e.which === 17 && playerVidId !== "" && playerVidTitle !== "") {
         queue.push(new Song(playerVidId,playerVidTitle,playerVidThumbnail));
-        $('#queue').append('<li class="group">'+playerVidThumbnail+'<h3>'+playerVidTitle+'</h3><button>Delete</button></li>');
+        $('#queue').append('<li class="group">'+playerVidThumbnail+'<h3>'+playerVidTitle+'</h3><button id="queueNextButton">Queue Next</button><button id="deleteButton">Delete</button></li>');
     }
 }
 function removeFromQueue() {
