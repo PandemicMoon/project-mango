@@ -38,10 +38,7 @@ function f()
 {
 	var currTime = Math.floor(player.getCurrentTime());
 	var dur = Math.floor(player.getDuration());
-	var left = currTime-dur;
-	console.log("Curr time: " + currTime);
-	console.log("Dur: " + dur);
-	console.log("Dur - Curr time: " + left);
+	var left = dur-currTime;
 	setTime(currTime, left);
 }
 function onPlayerReady(event) {
@@ -52,7 +49,7 @@ function onPlayerReady(event) {
 	thumbnail.src = "http://img.youtube.com/vi/" + event.target.B.videoData["video_id"] + "/0.jpg";
 	currentlyPlaying.innerHTML = '<a href="' + event.target.getVideoUrl() + '">' + event.target.B.videoData.title + '</a>';
 	//event.target.setPlayBackQuality(player.getAvailableQualityLevels()[0]); //Uncomment if not showing video frame
-	timeChanger = setInterval(f, 1000);
+	timeChanger = setInterval(f, 500);
 }
 function onPlayerStateChange(event) {
     if (event.data === 0 && queue.length > 0) {
@@ -66,7 +63,7 @@ function onPlayerStateChange(event) {
 	    {
             playButton.style.display = "none";
             pauseButton.style.display = "inline-block";
-			timeChanger = setInterval(f, 1000);
+			timeChanger = setInterval(f, 500);
 	    }
 		else
 		{
@@ -209,7 +206,7 @@ function setTime(secPassed, secLeft)
 	
 	var minLeft = Math.floor(secLeft / 60);
 	var secLeft = secLeft - (minLeft * 60);
-	var prettyLeft = str_pad_left(minPassed,'0',2)+':'+str_pad_left(secPassed,'0',2);
+	var prettyLeft = str_pad_left(minLeft,'0',2)+':'+str_pad_left(secLeft,'0',2);
 	timeLeft.innerHTML = prettyLeft;
 }
 function str_pad_left(string,pad,length) {
