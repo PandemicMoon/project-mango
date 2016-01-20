@@ -55,7 +55,11 @@ function onPlayerStateChange(event) {
 	    {
             playButton.style.display = "none";
             pauseButton.style.display = "inline-block";
-			timeChanger = setInterval(function() { setTime(player.getCurrentTime(), player.getDuration()-player.getCurrentTime()) }(), 1000);
+			function f()
+			{
+				setTime(player.getCurrentTime(), player.getDuration()-player.getCurrentTime());
+			}
+			timeChanger = setInterval(f, 1000);
 	    }
 		else
 		{
