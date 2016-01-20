@@ -109,7 +109,7 @@ function makeRequest(keyword, type) {
             playVideo(vidId);
         } else if (type === 'addBox') {
             queue.push(new Song(vidId,vidTitle,vidThumbnail));
-            $('#queue').append('<li class="group">'+vidThumbnail+'<h3>'+vidTitle+'</h3><button>Delete</button></li>');
+            $('#queue').append('<li class="group">'+vidThumbnail+'<h3>'+vidTitle+'</h3><button id="queueNextButton">Queue Next</button><button id="deleteButton">Delete</button></li>');
         }
     });
 }
@@ -142,7 +142,8 @@ Array.prototype.remove = function(from, to) {
 };
 $(document).ready(function() {
     $(document).keydown(addCurrentlyPlayingVid);
-    $('#queue').on('click', 'button', removeFromQueue);
+    $('#queue').on('click', '#deleteButton', removeFromQueue);
+	$('#queue').on('click', '#queueNextButton', queueNext);
 });
 function play()
 {
@@ -171,4 +172,13 @@ function forward()
 function backward()
 {
 	player.seekTo(0, true);
+}
+function queueNext()
+{
+	var liToBeQueuedNext = $(this).closest('li');
+    var listPosition = $('li').index(liToBeQueuedNext);
+    var temp = queue[listPosition];
+	queue[listPosition] = queue[0];
+	queue[0] = temp;
+    liToBeQueuedNext.parent().prepend(liToBeQueuedNext);
 }
