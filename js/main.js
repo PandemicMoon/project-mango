@@ -42,6 +42,14 @@ function onPlayerReady(event) {
 	thumbnail.src = "http://img.youtube.com/vi/" + event.target.B.videoData["video_id"] + "/0.jpg";
 	currentlyPlaying.innerHTML = '<a href="' + event.target.getVideoUrl() + '">' + event.target.B.videoData.title + '</a>';
 	//event.target.setPlayBackQuality(player.getAvailableQualityLevels()[0]); //Uncomment if not showing video frame
+	function f()
+	{
+		console.log(player.getCurrentTime());
+		console.log(player.getDuration());
+		console.log(player.getDuration()-player.getCurrentTime());
+		setTime(player.getCurrentTime(), player.getDuration()-player.getCurrentTime());
+	}
+	timeChanger = setInterval(f, 1000);
 }
 function onPlayerStateChange(event) {
     if (event.data === 0 && queue.length > 0) {
@@ -57,6 +65,9 @@ function onPlayerStateChange(event) {
             pauseButton.style.display = "inline-block";
 			function f()
 			{
+				console.log(player.getCurrentTime());
+				console.log(player.getDuration());
+				console.log(player.getDuration()-player.getCurrentTime());
 				setTime(player.getCurrentTime(), player.getDuration()-player.getCurrentTime());
 			}
 			timeChanger = setInterval(f, 1000);
