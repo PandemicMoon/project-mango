@@ -200,7 +200,7 @@ input[name="add"] {
 ::-webkit-scrollbar-thumb:window-inactive {
 	background: rgba(255,0,0,0.4); 
 }
-button #deleteButton {
+#deleteButton {
 	background-color: #FFF;
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
@@ -210,13 +210,14 @@ button #deleteButton {
 	float: right;
 	margin-top: 5px;
 }
-button #queueNextButton {
+#queueNextButton {
 	background-color: #FFF;
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
 	border: 1px solid #32CD32;
 	color: #32CD32;
+	float: right;
 	margin-top: 5px;
 }
 button:focus {
