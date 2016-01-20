@@ -36,13 +36,18 @@
 			</div>
 			<div class="playControls">
 				<div class="playControlsInner">
-					<div style="width: 40rem;">
+					<div style="width: 80rem;">
 						<i id="backward" onclick="backward()" class="fa fa-step-backward fa-2x"></i>
 						<i id="playButton" onclick="play()" class="fa fa-play fa-2x"></i>
-						<i id="forward" onclick="foward()" class="fa fa-step-forward fa-2x"></i>
+						<i id="pauseButton" onclick="pause()" class="fa fa-pause fa-2x" style="display: none;"></i>
+						<i id="forward" onclick="forward()" class="fa fa-step-forward fa-2x"></i>
 						<div class="mediaProgressBarWrapper">
 							<div class="mediaProgressBarBackground"></div>
 							<div class="mediaProgressBar"></div>
+						</div>
+						<img style="bottom: 50%" id="thumbnail" src="">
+						<div style="display: inline-block; position: relative; top: 50%; transform: translateY(-50%);">
+							<p id="currentlyPlaying" style="display: inline; position: relative; top: 50%; transform: translateY(-50%);"></p>
 						</div>
 					</div>
 				</div>

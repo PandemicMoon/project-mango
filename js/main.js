@@ -3,9 +3,15 @@ var publicAPIKey = 'AIzaSyDJZ9zP-lyOtZGMJuvSqJSqhhkSGVIZJao',
     $searchField = $('#searchBox'),
     $addField = $('#addBox'),
     queue = [],
-    player;
+    player,
+	playButton = document.getElementById("playButton"),
+	pauseButton = document.getElementById("pauseButton"),
+	currentlyPlaying = document.getElementById("currentlyPlaying"),
+	thumbnail = document.getElementById("thumbnail"),
+	lastPlayerState;
+	
 function onYouTubeIframeAPIReady() {
-    var initialVideoId = "OaR2JeqxQDY";
+    var initialVideoId = "cHHLHGNpCSA";
     player = new YT.Player('player', {
         height: '205',
         width: '300',
@@ -27,15 +33,40 @@ function onYouTubeIframeAPIReady() {
 }
 function onPlayerReady(event) {
     event.target.playVideo();
+	playButton.style.display = "none";
+    pauseButton.style.display = "inline-block";
+	lastPlayerState = 1;
+	thumbnail.src = "http://img.youtube.com/vi/" + event.target.B.videoData["video_id"] + "/0.jpg";
+	currentlyPlaying.innerHTML = '<a href="' + event.target.getVideoUrl() + '">' + event.target.B.videoData.title + '</a>';
+	//event.target.setPlayBackQuality(player.getAvailableQualityLevels()[0]); //Uncomment if not showing video frame
 }
 function onPlayerStateChange(event) {
     if (event.data === 0 && queue.length > 0) {
         playNextVideoInQueue();
+		lastPlayerState = 1;
     }
+	
+	if (player.getPlayerState() != lastPlayerState)
+	{
+		if (player.getPlayerState() === 1)
+	    {
+            pauseButton.style.display = "none";
+            playButton.style.display = "inline-block";
+	    }
+		else
+		{
+			playButton.style.display = "none";
+            pauseButton.style.display = "inline-block";
+		}
+		lastPlayerState = player.getPlayerState();
+	}
 }
 function playNextVideoInQueue() {
     var nextVidID = queue[0].id;
     player.loadVideoById(nextVidID);
+	//player.setPlayBackQuality(player.getAvailableQualityLevels()[0]); //Uncomment if not showing video frame
+	thumbnail.src = "http://img.youtube.com/vi/" + queue[0].id + "/0.jpg";
+	currentlyPlaying.innerHTML = '<a href="' + player.getVideoUrl() + '">' + queue[0].title + '</a>';
     queue.shift();
     $('#queue li:first-child').remove();
 } 
@@ -113,4 +144,27 @@ $(document).ready(function() {
     $(document).keydown(addCurrentlyPlayingVid);
     $('#queue').on('click', 'button', removeFromQueue);
 });
-
+function play()
+{
+	if (player.getPlayerState() === -1, 2)
+	{
+        player.playVideo();
+        playButton.style.display = "none";
+        pauseButton.style.display = "inline-block";
+	}
+}
+function pause()
+{
+	if (player.getPlayerState() === 1)
+	{
+        player.pauseVideo();
+        pauseButton.style.display = "none";
+        playButton.style.display = "inline-block";
+	}
+}
+function foward()
+{
+	if (queue.length > 0) {
+        playNextVideoInQueue();
+    }
+}

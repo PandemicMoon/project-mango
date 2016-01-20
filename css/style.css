@@ -238,7 +238,7 @@ button:hover {
 .playControlsInner
 {
 	margin: 0 auto;
-	width: 40rem;
+	width: 80rem;
 }
 .playControlsInner i
 {
@@ -251,8 +251,6 @@ button:hover {
 .mediaProgressBarWrapper
 {
 	display: inline-block;
-	/*top: 50%; 
-	transform: translateY(-50%);*/
 	width: 400px;
     padding: 10px 0;
     margin: 14px 10px 0 10px;
@@ -267,4 +265,12 @@ button:hover {
 	height: 2px;
 	background-color: #D82020;
 	transition: width 50ms;
+}
+#thumbnail
+{
+	width: 40px;
+	outline: none;
+	margin-right: 5px;
+	position: relative;
+	
 }
