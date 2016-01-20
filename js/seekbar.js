@@ -70,7 +70,7 @@ $.extend(Seekbar.Seekbar.prototype, {
         this.area.height = this.el.height();
         this.area.size = Math.max(this.area.width, this.area.height);
 
-        this.orientation = 'vertical';
+        this.orientation = 'horizontal';
 
         this.elNegative = $('<div class="seekbar-negative" style="position:absolute;z-index:1"></div>');
         this.elPositive = $('<div class="seekbar-positive" style="position:absolute;z-index:1"></div>');
