@@ -211,7 +211,7 @@ function setTime(secPassed, secTotal)
 	var secTotal = secTotal - (minTotal * 60);
 	var prettyTotal = str_pad_left(minTotal,'0',2)+':'+str_pad_left(secTotal,'0',2);
 	if (timePassed.innerHTML != prettyTotal)
-	    timeTotal.innerHTML = prettyTotal;
+	    timeLeft.innerHTML = prettyTotal;
 	
 	var percent = Math.round((100*secPassed)/secTotal);
 	mediaProgressBar.style.width = percent + "%";
