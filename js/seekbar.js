@@ -85,7 +85,7 @@ $.extend(Seekbar.Seekbar.prototype, {
 
         this.thumb = $('<div style="position:absolute;z-index:2"></div>');
         this.thumbInner = $('<div class="seekbar-thumb-needle" style="position:absolute;z-index:2;background-color:' + this.thumbColor + '"></div>');
-        this.thumbOuter = $('<div class="seekbar-thumb" style="position:absolute;z-index:2;width:100%;background-color:' + this.thumbColor + ';display:none;"></div>');
+        this.thumbOuter = $('<div class="seekbar-thumb" style="position:absolute;z-index:2;width:100%;background-color:' + this.thumbColor + '"></div>');
 
         if(this.thumbColor != undefined){
             this.thumbInner.css("background-color", this.thumbColor);
