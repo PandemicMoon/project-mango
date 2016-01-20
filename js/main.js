@@ -34,6 +34,16 @@ function onYouTubeIframeAPIReady() {
     }
   });
 }
+function f()
+{
+	var currTime = Math.floor(player.getCurrentTime());
+	var dur = Math.floor(player.getDuration());
+	var left = currTime-dur;
+	console.log("Curr time: " + currTime);
+	console.log("Dur: " + dur);
+	console.log("Dur - Curr time: " + left);
+	setTime(Math.floor(currTime, left);
+}
 function onPlayerReady(event) {
     event.target.playVideo();
 	playButton.style.display = "none";
@@ -42,13 +52,6 @@ function onPlayerReady(event) {
 	thumbnail.src = "http://img.youtube.com/vi/" + event.target.B.videoData["video_id"] + "/0.jpg";
 	currentlyPlaying.innerHTML = '<a href="' + event.target.getVideoUrl() + '">' + event.target.B.videoData.title + '</a>';
 	//event.target.setPlayBackQuality(player.getAvailableQualityLevels()[0]); //Uncomment if not showing video frame
-	function f()
-	{
-		console.log("Curr time: " + player.getCurrentTime());
-		console.log("Dur: " + player.getDuration());
-		console.log("Dur - Curr time: " + (player.getDuration()-player.getCurrentTime()));
-		setTime(player.getCurrentTime(), player.getDuration()-player.getCurrentTime());
-	}
 	timeChanger = setInterval(f, 1000);
 }
 function onPlayerStateChange(event) {
@@ -63,13 +66,6 @@ function onPlayerStateChange(event) {
 	    {
             playButton.style.display = "none";
             pauseButton.style.display = "inline-block";
-			function f()
-			{
-				console.log("Curr time: " + player.getCurrentTime());
-				console.log("Dur: " + player.getDuration());
-				console.log("Dur - Curr time: " + (player.getDuration()-player.getCurrentTime()));
-				setTime(player.getCurrentTime(), player.getDuration()-player.getCurrentTime());
-			}
 			timeChanger = setInterval(f, 1000);
 	    }
 		else
