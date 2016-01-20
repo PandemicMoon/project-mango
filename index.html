@@ -7,30 +7,50 @@
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
     </head>
     <body>
-		<div id="container">
-			<header>
-				<a href="http://pandemicmoon.github.io/project-mango"><h1 id="title">Project Mango</h1></a>
-				<input id="searchBox" name="search" spellcheck="false" placeholder="Play any songs (i.e. Peace Of Mind Boston)"></input>
-			</header>
-			<hr>
-			<div class="group">
-				<section id="current">
-					<h2>Currently playing:</h2>
-					<div id="player"></div>
-				</section>
-				<section id="next">
-					<h2>Up next:</h2>
-					<p>Press <strong>control</strong> to add the current song to the queue. Or, search a different song to add:
-						<input id="addBox" name="add" spellcheck="false" placeholder="Add any songs"></input>
-					</p>
-					<div id="queue-container">
-						<ul id="queue"></ul>
-					</div>
-				</section>
+		<div class="wrapper">
+			<div class="container">
+				<div class="header">
+					<a href="http://pandemicmoon.github.io/project-mango"><h1 id="title">Project Mango</h1></a>
+					<input id="searchBox" name="search" spellcheck="false" placeholder="Play any songs (i.e. Peace Of Mind Boston)"></input>
+				</div>
+				<hr>
+				<div class="group">
+					<section id="current">
+						<h2>Currently playing:</h2>
+						<div id="player"></div>
+					</section>
+					<section id="next">
+						<h2>Up next:</h2>
+						<p>Press <strong>control</strong> to add the current song to the queue. Or, search a different song to add:
+							<input id="addBox" name="add" spellcheck="false" placeholder="Add any songs"></input>
+						</p>
+						<div id="queue-container">
+							<ul id="queue"></ul>
+						</div>
+					</section>
+				</div>
+				<div class="footer">
+					<h6>Made By <a href="http://pandemic.feedopoly.com/">Pandemic Moon</a>, Adapted From <a href="http://hoonah.github.io/tunic">Tunic</a> By <a href="http://hoonah.github.io">William Song</a>.</h6>
+				</div>
 			</div>
-			<footer>
-				<h6>Made By <a href="http://pandemic.feedopoly.com/">Pandemic Moon</a>, Adapted From <a href="http://hoonah.github.io/tunic">Tunic</a> By <a href="http://hoonah.github.io">William Song</a>.</h6>
-			</footer>
+			<div class="playControls">
+				<div class="playControlsInner">
+					<div style="width: 80rem;">
+						<i id="backward" onclick="backward()" class="fa fa-step-backward fa-2x"></i>
+						<i id="playButton" onclick="play()" class="fa fa-play fa-2x"></i>
+						<i id="pauseButton" onclick="pause()" class="fa fa-pause fa-2x" style="display: none;"></i>
+						<i id="forward" onclick="forward()" class="fa fa-step-forward fa-2x"></i>
+						<div class="mediaProgressBarWrapper">
+							<div class="mediaProgressBarBackground"></div>
+							<div class="mediaProgressBar"></div>
+						</div>
+						<img style="bottom: 50%" id="thumbnail" src="">
+						<div style="display: inline-block; position: relative; top: 50%; transform: translateY(-50%);">
+							<p id="currentlyPlaying" style="display: inline; position: relative; top: 50%; transform: translateY(-50%);"></p>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
