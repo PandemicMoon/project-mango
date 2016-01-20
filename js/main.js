@@ -50,13 +50,13 @@ function onPlayerStateChange(event) {
 	{
 		if (player.getPlayerState() === 1)
 	    {
-            pauseButton.style.display = "none";
-            playButton.style.display = "inline-block";
+            playButton.style.display = "none";
+            pauseButton.style.display = "inline-block";
 	    }
 		else
 		{
-			playButton.style.display = "none";
-            pauseButton.style.display = "inline-block";
+			pauseButton.style.display = "none";
+            playButton.style.display = "inline-block";
 		}
 		lastPlayerState = player.getPlayerState();
 	}
