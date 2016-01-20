@@ -8,7 +8,7 @@ var publicAPIKey = 'AIzaSyBeTQ6HWplls742QA_bvODF-vPOFf4nm2U',
 	pauseButton = document.getElementById("pauseButton"),
 	currentlyPlaying = document.getElementById("currentlyPlaying"),
 	thumbnail = document.getElementById("thumbnail"),
-	timePlayed = document.getElementById("timePlayed"),
+	timePassed = document.getElementById("timePassed"),
 	timeLeft = document.getElementById("timeLeft"),
 	lastPlayerState;
 	
