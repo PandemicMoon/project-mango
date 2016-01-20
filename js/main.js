@@ -44,9 +44,9 @@ function onPlayerReady(event) {
 	//event.target.setPlayBackQuality(player.getAvailableQualityLevels()[0]); //Uncomment if not showing video frame
 	function f()
 	{
-		console.log(player.getCurrentTime());
-		console.log(player.getDuration());
-		console.log(player.getDuration()-player.getCurrentTime());
+		console.log("Curr time: " + player.getCurrentTime());
+		console.log("Dur: " + player.getDuration());
+		console.log("Dur - Curr time: " + (player.getDuration()-player.getCurrentTime()));
 		setTime(player.getCurrentTime(), player.getDuration()-player.getCurrentTime());
 	}
 	timeChanger = setInterval(f, 1000);
@@ -207,12 +207,12 @@ function queueNext()
 function setTime(secPassed, secLeft)
 {
 	var minPassed = Math.floor(secPassed / 60);
-	var secPassed = secPassed - minPassed * 60;
+	var secPassed = secPassed - (minPassed * 60);
 	var prettyPassed = str_pad_left(minPassed,'0',2)+':'+str_pad_left(secPassed,'0',2);
 	timePassed.innerHTML = prettyPassed;
 	
 	var minLeft = Math.floor(secLeft / 60);
-	var secLeft = secLeft - minLeft * 60;
+	var secLeft = secLeft - (minLeft * 60);
 	var prettyLeft = str_pad_left(minPassed,'0',2)+':'+str_pad_left(secPassed,'0',2);
 	timeLeft.innerHTML = prettyLeft;
 }
