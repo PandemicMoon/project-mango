@@ -42,7 +42,7 @@ function f()
 	console.log("Curr time: " + currTime);
 	console.log("Dur: " + dur);
 	console.log("Dur - Curr time: " + left);
-	setTime(Math.floor(currTime, left);
+	setTime(currTime, left);
 }
 function onPlayerReady(event) {
     event.target.playVideo();
