@@ -1,5 +1,5 @@
 "use strict";
-var publicAPIKey = 'AIzaSyDJZ9zP-lyOtZGMJuvSqJSqhhkSGVIZJao',
+var publicAPIKey = 'AIzaSyBeTQ6HWplls742QA_bvODF-vPOFf4nm2U',
     $searchField = $('#searchBox'),
     $addField = $('#addBox'),
     queue = [],
@@ -11,7 +11,7 @@ var publicAPIKey = 'AIzaSyDJZ9zP-lyOtZGMJuvSqJSqhhkSGVIZJao',
 	lastPlayerState;
 	
 function onYouTubeIframeAPIReady() {
-    var initialVideoId = "cHHLHGNpCSA";
+    var initialVideoId = "ncIVUXZla8";
     player = new YT.Player('player', {
         height: '205',
         width: '300',
