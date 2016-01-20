@@ -8,6 +8,8 @@ var publicAPIKey = 'AIzaSyBeTQ6HWplls742QA_bvODF-vPOFf4nm2U',
 	pauseButton = document.getElementById("pauseButton"),
 	currentlyPlaying = document.getElementById("currentlyPlaying"),
 	thumbnail = document.getElementById("thumbnail"),
+	timePlayed = document.getElementById("timePlayed"),
+	timeLeft = document.getElementById("timeLeft"),
 	lastPlayerState;
 	
 function onYouTubeIframeAPIReady() {
@@ -60,6 +62,7 @@ function onPlayerStateChange(event) {
 		}
 		lastPlayerState = player.getPlayerState();
 	}
+	setTime(player.getCurrentTime(), player.getDuration()-player.getCurrentTime());
 }
 function playNextVideoInQueue() {
     var nextVidID = queue[0].id;
@@ -81,7 +84,8 @@ function addCurrentlyPlayingVid(e) {
     var playerVidThumbnail = '<img src = http://img.youtube.com/vi/'+playerVidId+'/0.jpg>';
     if (e.which === 17 && playerVidId !== "" && playerVidTitle !== "") {
         queue.push(new Song(playerVidId,playerVidTitle,playerVidThumbnail));
-        $('#queue').append('<li class="group">'+playerVidThumbnail+'<h3>'+playerVidTitle+'</h3><button id="deleteButton">Delete</button><button id="queueNextButton">Queue Next</button></li>');
+        $('#queue').append('<li class="group">'+playerVidThumbnail+'<h3>'+playerVidTitle+
+		'</h3><button id="deleteButton">Delete</button><button id="queueNextButton">Queue Next</button></li>');
     }
 }
 function removeFromQueue() {
@@ -109,7 +113,8 @@ function makeRequest(keyword, type) {
             playVideo(vidId);
         } else if (type === 'addBox') {
             queue.push(new Song(vidId,vidTitle,vidThumbnail));
-            $('#queue').append('<li class="group">'+vidThumbnail+'<h3>'+vidTitle+'</h3><button id="deleteButton">Delete</button><button id="queueNextButton">Queue Next</button></li>');
+            $('#queue').append('<li class="group">'+vidThumbnail+'<h3>'+vidTitle+
+			'</h3><button id="deleteButton">Delete</button><button id="queueNextButton">Queue Next</button></li>');
         }
     });
 }
@@ -181,4 +186,19 @@ function queueNext()
 	queue[listPosition] = queue[0];
 	queue[0] = temp;
     liToBeQueuedNext.parent().prepend(liToBeQueuedNext);
+}
+function setTime(secPassed, secLeft)
+{
+	var minPassed = Math.floor(secPassed / 60);
+	var secPassed = secPassed - minPassed * 60;
+	var prettyPassed = str_pad_left(minPassed,'0',2)+':'+str_pad_left(secPassed,'0',2);
+	timePassed.innerHTML = prettyPassed;
+	
+	var minLeft = Math.floor(secLeft / 60);
+	var secLeft = secLeft - minLeft * 60;
+	var prettyLeft = str_pad_left(minPassed,'0',2)+':'+str_pad_left(secPassed,'0',2);
+	timeLeft.innerHTML = prettyLeft;
+}
+function str_pad_left(string,pad,length) {
+    return (new Array(length+1).join(pad)+string).slice(-length);
 }
