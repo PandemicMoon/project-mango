@@ -84,6 +84,7 @@ function onPlayerStateChange(event) {
             playButton.style.display = "none";
             pauseButton.style.display = "inline-block";
 			timeChanger = setInterval(f, 500);
+			slider.maxValue = player.getDuration();
 	    }
 		else
 		{
