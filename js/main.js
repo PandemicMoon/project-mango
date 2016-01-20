@@ -162,9 +162,13 @@ function pause()
         playButton.style.display = "inline-block";
 	}
 }
-function foward()
+function forward()
 {
 	if (queue.length > 0) {
         playNextVideoInQueue();
     }
+}
+function backwards()
+{
+	player.seekTo(0, true);
 }
