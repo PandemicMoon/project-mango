@@ -65,9 +65,9 @@ function onPlayerStateChange(event) {
             pauseButton.style.display = "inline-block";
 			function f()
 			{
-				console.log(player.getCurrentTime());
-				console.log(player.getDuration());
-				console.log(player.getDuration()-player.getCurrentTime());
+				console.log("Curr time: " + player.getCurrentTime());
+				console.log("Dur: " + player.getDuration());
+				console.log("Dur - Curr time: " + (player.getDuration()-player.getCurrentTime()));
 				setTime(player.getCurrentTime(), player.getDuration()-player.getCurrentTime());
 			}
 			timeChanger = setInterval(f, 1000);
