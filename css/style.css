@@ -286,3 +286,11 @@ button:hover {
 	position: relative;
 	
 }
+#timePlayed
+{
+	color: #D82020;
+}
+#timeLeft
+{
+	color: #ccc;
+}

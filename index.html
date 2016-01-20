@@ -41,9 +41,15 @@
 						<i id="playButton" onclick="play()" class="fa fa-play fa-2x"></i>
 						<i id="pauseButton" onclick="pause()" class="fa fa-pause fa-2x" style="display: none;"></i>
 						<i id="forward" onclick="forward()" class="fa fa-step-forward fa-2x"></i>
+						<div style="display: inline-block; position: relative; top: 50%; transform: translateY(-50%);">
+							<p id="timePlayed" style="display: inline; position: relative; top: 50%; transform: translateY(-50%);"></p>
+						</div>
 						<div class="mediaProgressBarWrapper">
 							<div class="mediaProgressBarBackground"></div>
 							<div class="mediaProgressBar"></div>
+						</div>
+						<div style="display: inline-block; position: relative; top: 50%; transform: translateY(-50%);">
+							<p id="timeLeft" style="display: inline; position: relative; top: 50%; transform: translateY(-50%);"></p>
 						</div>
 						<img style="bottom: 50%" id="thumbnail" src="">
 						<div style="display: inline-block; position: relative; top: 50%; transform: translateY(-50%);">
