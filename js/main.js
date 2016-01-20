@@ -10,7 +10,8 @@ var publicAPIKey = 'AIzaSyBeTQ6HWplls742QA_bvODF-vPOFf4nm2U',
 	thumbnail = document.getElementById("thumbnail"),
 	timePassed = document.getElementById("timePassed"),
 	timeLeft = document.getElementById("timeLeft"),
-	lastPlayerState;
+	lastPlayerState,
+	timeChanger;
 	
 function onYouTubeIframeAPIReady() {
     var initialVideoId = "-ncIVUXZla8";
@@ -54,15 +55,16 @@ function onPlayerStateChange(event) {
 	    {
             playButton.style.display = "none";
             pauseButton.style.display = "inline-block";
+			timeChanger = setInterval(setTime(player.getCurrentTime(), player.getDuration()-player.getCurrentTime()), 1000);
 	    }
 		else
 		{
 			pauseButton.style.display = "none";
             playButton.style.display = "inline-block";
+			clearInterval(timeChanger);
 		}
 		lastPlayerState = player.getPlayerState();
 	}
-	setTime(player.getCurrentTime(), player.getDuration()-player.getCurrentTime());
 }
 function playNextVideoInQueue() {
     var nextVidID = queue[0].id;
