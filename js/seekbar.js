@@ -54,7 +54,7 @@ $.extend(Seekbar.Seekbar.prototype, {
     valueArea: { min: 0, max: 0, width:0 },
 
     orientation : undefined,
-    thumbSize : 0,
+    thumbSize : 10,
     isActive : false,
 
     startCoordinates:undefined,
@@ -124,8 +124,6 @@ $.extend(Seekbar.Seekbar.prototype, {
     },
 
     positionItems:function(){
-        this.thumbSize = Math.min(this.area.height, this.area.width);
-        this.thumbSize += this.thumbSize % 2;
         var size = Math.max(this.area.width, this.area.height);
 
         this.thumbOuter.css({
