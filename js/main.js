@@ -199,21 +199,21 @@ function queueNext()
 	queue[0] = temp;
     liToBeQueuedNext.parent().prepend(liToBeQueuedNext);
 }
-function setTime(secPassed, secTotal)
+function setTime(secPassedOg, secTotalOg)
 {
-	var minPassed = Math.floor(secPassed / 60);
-	var secPassed = secPassed - (minPassed * 60);
+	var minPassed = Math.floor(secPassedOg / 60);
+	var secPassed = secPassedOg - (minPassed * 60);
 	var prettyPassed = str_pad_left(minPassed,'0',2)+':'+str_pad_left(secPassed,'0',2);
 	if (timePassed.innerHTML != prettyPassed)
 	    timePassed.innerHTML = prettyPassed;
 	
-	var minTotal = Math.floor(secTotal / 60);
-	var secTotal = secTotal - (minTotal * 60);
+	var minTotal = Math.floor(secTotalOg / 60);
+	var secTotal = secTotalOg - (minTotal * 60);
 	var prettyTotal = str_pad_left(minTotal,'0',2)+':'+str_pad_left(secTotal,'0',2);
 	if (timePassed.innerHTML != prettyTotal)
 	    timeLeft.innerHTML = prettyTotal;
 	
-	var percent = Math.round(100*(secPassed/secTotal));
+	var percent = Math.round(100*(secPassedOg/secTotalOg));
 	mediaProgressBar.style.width = percent + "%";
 }
 function str_pad_left(string,pad,length) {
