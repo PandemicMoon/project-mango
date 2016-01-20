@@ -70,7 +70,7 @@ $.extend(Seekbar.Seekbar.prototype, {
         this.area.height = this.el.height();
         this.area.size = Math.max(this.area.width, this.area.height);
 
-        this.orientation = 'horizontal';
+        this.orientation = 'vertical';
 
         this.elNegative = $('<div class="seekbar-negative" style="position:absolute;z-index:1"></div>');
         this.elPositive = $('<div class="seekbar-positive" style="position:absolute;z-index:1"></div>');
@@ -85,7 +85,7 @@ $.extend(Seekbar.Seekbar.prototype, {
 
         this.thumb = $('<div style="position:absolute;z-index:2"></div>');
         this.thumbInner = $('<div class="seekbar-thumb-needle" style="position:absolute;z-index:2;background-color:' + this.thumbColor + '"></div>');
-        this.thumbOuter = $('<div class="seekbar-thumb" style="position:absolute;z-index:2;width:100%;background-color:' + this.thumbColor + '"></div>');
+        this.thumbOuter = $('<div class="seekbar-thumb" style="position:absolute;z-index:2;width:100%;background-color:' + this.thumbColor + ';display:none;"></div>');
 
         if(this.thumbColor != undefined){
             this.thumbInner.css("background-color", this.thumbColor);
@@ -124,6 +124,8 @@ $.extend(Seekbar.Seekbar.prototype, {
     },
 
     positionItems:function(){
+        this.thumbSize = Math.min(this.area.height, this.area.width);
+        this.thumbSize += this.thumbSize % 2;
         var size = Math.max(this.area.width, this.area.height);
 
         this.thumbOuter.css({
