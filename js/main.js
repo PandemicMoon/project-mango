@@ -130,13 +130,20 @@ function playVideo(videoId) {
     player.loadVideoById(videoId);
 }
 function makeRequest(keyword, type) {
-    var request = gapi.client.youtube.search.list({
-        q: keyword,
-        type: 'video',
-        part: 'snippet',
-        maxResults: 3,
-        order: 'viewCount'
-    });
+	var request;
+	request = gapi.client.youtube.videos.list({
+            id: keyword,
+            part: 'snippet'
+	});
+	if (request.items[0] == null || request.items[0] == undefined)
+	{
+		request = gapi.client.youtube.search.list({
+			q: keyword,
+			part: 'snippet',
+			maxResults: 3,
+			order: 'relevance'
+		});
+	}
     request.execute(function(response) {
         var vidId = response.items[0].id.videoId;
         var vidTitle = response.items[0].snippet.title;
