@@ -141,7 +141,7 @@ function playVideo(videoId) {
 }
 function makeRequest(keyword, type) {
     if (type === 'searchBox') {
-        loadPlaylistById(keyword);
+        loadPlaylist(keyword);
 	} 
 	else if (type === 'addBox') 
 	{
