@@ -10,6 +10,7 @@ var publicAPIKey = 'AIzaSyBeTQ6HWplls742QA_bvODF-vPOFf4nm2U',
 	thumbnail = document.getElementById("thumbnail"),
 	timePassed = document.getElementById("timePassed"),
 	timeLeft = document.getElementById("timeLeft"),
+	volumeButton = document.getElementById("volumeButton");
 	lastPlayerState,
 	timeChanger,
 	slider = new Seekbar.Seekbar({
@@ -321,4 +322,24 @@ function loadPlaylist(id)
 			alert("Playlist not found. Are you sure you have the right id?");
 		}
 	});
+}
+function mute()
+{
+	if (player.isMuted())
+	{
+		player.unMute();
+		if (player.getVolume() === 100)
+		{
+			volumeButton.className = "fa fa-volume-up fa-2x";
+		}
+		else 
+		{
+			volumeButton.className = "fa fa-volume-down fa-2x";
+		}
+	}
+	else
+	{
+		player.mute();
+		volumeButton.className = "fa fa-volume-off fa-2x";
+	}
 }
