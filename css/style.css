@@ -291,6 +291,7 @@ button:hover {
 }
 .volumePopUp
 {
-	z-index: 200;
+	position: relative;
+	z-index: 20;
 	background-color: #777;
 }
