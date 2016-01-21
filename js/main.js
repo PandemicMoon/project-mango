@@ -11,6 +11,7 @@ var publicAPIKey = 'AIzaSyBeTQ6HWplls742QA_bvODF-vPOFf4nm2U',
 	timePassed = document.getElementById("timePassed"),
 	timeLeft = document.getElementById("timeLeft"),
 	volumeButton = document.getElementById("volumeButton"),
+	volumePopUp = document.getElementById("volumePopUp"),
 	lastPlayerState,
 	timeChanger,
 	slider = new Seekbar.Seekbar({
@@ -32,6 +33,26 @@ var publicAPIKey = 'AIzaSyBeTQ6HWplls742QA_bvODF-vPOFf4nm2U',
 		   {
 				player.playVideo();
 		   }
+		   orientation: "horizontal";
+       });
+	volumeSlider = new Seekbar.Seekbar({
+           renderTo: "#seekbar-container-vertical-red",
+           minValue: 0, maxValue: 100,
+           valueListener: function (value) {
+				setVolume(value);
+           },
+           thumbColor: '#D82020',
+           negativeColor: '#D82020',
+           positiveColor: '#CCC',
+           value: 0,
+		   barSize: 1,
+		   onDrag: function()
+		   {
+		   },
+		   doneDrag: function()
+		   {
+		   }
+		   orientation: "vertical";
        });
 
 function onYouTubeIframeAPIReady() {
@@ -79,6 +100,22 @@ function onPlayerReady(event) {
 	thumbnail.src = "http://img.youtube.com/vi/" + event.target.B.videoData["video_id"] + "/0.jpg";
 	currentlyPlaying.innerHTML = '<a href="' + event.target.getVideoUrl() + '">' + event.target.B.videoData.title + '</a>';
 	//event.target.setPlayBackQuality(player.getAvailableQualityLevels()[0]); //Uncomment if not showing video frame
+	if (!player.isMuted())
+	{
+		if (player.getVolume() === 100)
+		{
+			volumeButton.className = "fa fa-volume-up fa-2x";
+		}
+		else 
+		{
+			volumeButton.className = "fa fa-volume-down fa-2x";
+		}
+	}
+	else
+	{
+		volumeButton.className = "fa fa-volume-off fa-2x";
+	}
+	volumeSlider.setValue(event.target.getVolume());
 	timeChanger = setInterval(f, 1);
 }
 function onPlayerStateChange(event) {
@@ -342,4 +379,16 @@ function mute()
 		player.mute();
 		volumeButton.className = "fa fa-volume-off fa-2x";
 	}
+}
+function volumePopUpUp()
+{
+	volumePopUp.style.display = "inline-block";
+}
+function volumePopUpDown()
+{
+	volumePopUp.style.display = "none";
+}
+function setVolume(value)
+{
+	player.setVolume(value);
 }

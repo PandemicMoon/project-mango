@@ -8,7 +8,7 @@ if(!Seekbar)var Seekbar = {};
 Seekbar.Seekbar = function(config){
     config = config || {};
 
-    var props = ["minValue","maxValue","value", "valueListener","negativeColor","positiveColor","needleSize","barSize","onDrag","doneDrag"];
+    var props = ["minValue","maxValue","value", "valueListener","negativeColor","positiveColor","needleSize","barSize","onDrag","doneDrag","orientation"];
     for(var i=0;i<props.length;i++){
         var key = props[i];
         if(config[key] != undefined)this[key] = config[key];
@@ -69,8 +69,6 @@ $.extend(Seekbar.Seekbar.prototype, {
         this.area.width = this.el.width();
         this.area.height = this.el.height();
         this.area.size = Math.max(this.area.width, this.area.height);
-
-        this.orientation = 'horizontal';
 
         this.elNegative = $('<div class="seekbar-negative" style="position:absolute;z-index:1"></div>');
         this.elPositive = $('<div class="seekbar-positive" style="position:absolute;z-index:1"></div>');
