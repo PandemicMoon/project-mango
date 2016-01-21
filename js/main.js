@@ -32,8 +32,8 @@ var publicAPIKey = 'AIzaSyBeTQ6HWplls742QA_bvODF-vPOFf4nm2U',
 		   doneDrag: function()
 		   {
 				player.playVideo();
-		   }
-		   orientation: "horizontal";
+		   },
+		   orientation: "horizontal"
        });
 	volumeSlider = new Seekbar.Seekbar({
            renderTo: "#seekbar-container-vertical-red",
