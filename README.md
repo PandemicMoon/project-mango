@@ -2,7 +2,7 @@
 An online music player based on [Tunic](http://hoonah.github.io/tunic/). Easily queue and play YouTube videos without watching the actual video.
 
 ##URL Variables
-Project Mango allows you to use page variables to automatically load content. All page variables are *optional*. Video and playlist ids are the YouTube video and playlist ids. These can be found in the YouTube URL. *For best results only use one page variable and **never** use more than one alias.*
+Project Mango allows you to use page variables to automatically load content. All page variables are *optional*. Video and playlist ids are the YouTube video and playlist ids. These can be found in the YouTube URL. *For best results only use one page variable and __never__ use more than one alias.*
 
 | Variable      | Description                                                                | Aliases    | Example                                                                                 |
 | ------------- | -------------------------------------------------------------------------- | ---------- | --------------------------------------------------------------------------------------- |
