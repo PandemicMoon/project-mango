@@ -289,3 +289,8 @@ button:hover {
 	color: #ccc;
 	margin-right: 10px;
 }
+.volumePopUp
+{
+	z-index: 200;
+	background-color: #777;
+}
