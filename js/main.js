@@ -307,22 +307,20 @@ function loadPlaylist(id)
 		maxResults: 50,
 	});
 	console.log(request.items);
-	if (request.items == null || request.items == undefined)
-	{
-		alert("Playlist not found. Are you sure you have the right id?");
-	}
-	else
-	{
-		request.execute(function(response) {
-			for (var i = 0; i < items.length; i++)
-			{
-				var vidId = response.items[i].id.videoId;
-				var vidTitle = response.items[i].snippet.title;
-				var vidThumbnail = '<img src = http://img.youtube.com/vi/'+vidId+'/0.jpg>';
-				queue.push(new Song(vidId,vidTitle,vidThumbnail));
-				$('#queue').append('<li class="group">'+vidThumbnail+'<h3>'+vidTitle+
-				'</h3><button id="deleteButton">Delete</button><button id="queueNextButton">Queue Next</button></li>');
-			}
-		});
+	request.execute(function(response) {
+		for (var i = 0; i < items.length; i++)
+		{
+			var vidId = response.items[i].id.videoId;
+			var vidTitle = response.items[i].snippet.title;
+			var vidThumbnail = '<img src = http://img.youtube.com/vi/'+vidId+'/0.jpg>';
+			queue.push(new Song(vidId,vidTitle,vidThumbnail));
+			$('#queue').append('<li class="group">'+vidThumbnail+'<h3>'+vidTitle+
+			'</h3><button id="deleteButton">Delete</button><button id="queueNextButton">Queue Next</button></li>');
+		}
+		if (request.items == null || request.items == undefined || i === 0)
+		{
+			alert("Playlist not found. Are you sure you have the right id?");
+		}
+	});
 	}
 }
