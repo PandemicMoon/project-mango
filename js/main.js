@@ -307,8 +307,7 @@ function loadPlaylist(id)
 		maxResults: 50,
 	});
 	request.execute(function(response) {
-		console.log(response.items);
-		for (var i = 0; i < items.length; i++)
+		for (var i = 0; i < response.items.length; i++)
 		{
 			var vidId = response.items[i].id.videoId;
 			var vidTitle = response.items[i].snippet.title;
