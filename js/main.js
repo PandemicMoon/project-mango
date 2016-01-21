@@ -309,7 +309,7 @@ function loadPlaylist(id)
 	request.execute(function(response) {
 		for (var i = 0; i < response.items.length; i++)
 		{
-			var vidId = response.items[i].id.videoId;
+			var vidId = response.items[i].snippet.resourceId.videoId;
 			var vidTitle = response.items[i].snippet.title;
 			var vidThumbnail = '<img src = http://img.youtube.com/vi/'+vidId+'/0.jpg>';
 			queue.push(new Song(vidId,vidTitle,vidThumbnail));
