@@ -306,7 +306,6 @@ function loadPlaylist(id)
 		part: 'snippet',
 		maxResults: 50,
 	});
-	console.log(request.items);
 	request.execute(function(response) {
 		for (var i = 0; i < items.length; i++)
 		{
@@ -322,5 +321,4 @@ function loadPlaylist(id)
 			alert("Playlist not found. Are you sure you have the right id?");
 		}
 	});
-	}
 }
