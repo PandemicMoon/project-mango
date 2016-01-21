@@ -302,7 +302,7 @@ function loadPlaylist(id)
 {
 	var request;
 	request = gapi.client.youtube.playlistItems.list({
-		id: playlistId,
+		playlistId: id,
 		part: 'snippet',
 		maxResults: 50,
 	});
