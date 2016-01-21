@@ -306,6 +306,7 @@ function loadPlaylist(id)
 		part: 'snippet',
 		maxResults: 50,
 	});
+	console.log(request.items);
 	if (request.items == null || request.items == undefined)
 	{
 		alert("Playlist not found. Are you sure you have the right id?");
