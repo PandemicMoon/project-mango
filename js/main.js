@@ -135,6 +135,7 @@ function makeRequest(keyword, type) {
             id: keyword,
             part: 'snippet'
 	});
+	console.log(request);
 	if (request.items[0] == null || request.items[0] == undefined)
 	{
 		request = gapi.client.youtube.search.list({
