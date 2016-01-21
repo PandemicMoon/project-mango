@@ -51,8 +51,8 @@ var publicAPIKey = 'AIzaSyBeTQ6HWplls742QA_bvODF-vPOFf4nm2U',
 		   },
 		   doneDrag: function()
 		   {
-		   }
-		   orientation: "vertical";
+		   },
+		   orientation: "vertical"
        });
 
 function onYouTubeIframeAPIReady() {
