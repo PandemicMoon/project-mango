@@ -301,7 +301,7 @@ function processPageVars()
 function loadPlaylist(id)
 {
 	var request;
-	request = gapi.client.youtube.playlistitems.list({
+	request = gapi.client.youtube.playlistItems.list({
 		id: playlistId,
 		part: 'snippet',
 		maxResults: 50,
