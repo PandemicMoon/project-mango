@@ -34,7 +34,17 @@ var publicAPIKey = 'AIzaSyBeTQ6HWplls742QA_bvODF-vPOFf4nm2U',
        });
 
 function onYouTubeIframeAPIReady() {
-    var initialVideoId = "-ncIVUXZla8";
+    var initialVideoId;
+	
+	if (getPageVariable("video"))
+		initialVideoId = getPageVariable("video");
+	else if (getPageVariable("v"))
+		initialVideoId = getPageVariable("v");
+	else if (getPageVariable("default"))
+		initialVideoId = getPageVariable("default");
+	else
+		initialVideoId = "-ncIVUXZla8";
+	
     player = new YT.Player('player', {
         height: '205',
         width: '300',
@@ -130,32 +140,34 @@ function playVideo(videoId) {
     player.loadVideoById(videoId);
 }
 function makeRequest(keyword, type) {
-	var request;
-	request = gapi.client.youtube.videos.list({
-            id: keyword,
-            part: 'snippet'
-	});
-	if (request.items == null || request.items == undefined)
+    if (type === 'searchBox') {
+        loadPlaylistById(keyword);
+	} 
+	else if (type === 'addBox') 
 	{
-		request = gapi.client.youtube.search.list({
-			q: keyword,
-			part: 'snippet',
-			maxResults: 3,
-			order: 'relevance'
+		var request;
+		request = gapi.client.youtube.videos.list({
+				id: keyword,
+				part: 'snippet'
+		});
+		if (request.items == null || request.items == undefined)
+		{
+			request = gapi.client.youtube.search.list({
+				q: keyword,
+				part: 'snippet',
+				maxResults: 3,
+				order: 'relevance'
+			});
+		}
+		request.execute(function(response) {
+				var vidId = response.items[0].id.videoId;
+				var vidTitle = response.items[0].snippet.title;
+				var vidThumbnail = '<img src = http://img.youtube.com/vi/'+vidId+'/0.jpg>';
+				queue.push(new Song(vidId,vidTitle,vidThumbnail));
+				$('#queue').append('<li class="group">'+vidThumbnail+'<h3>'+vidTitle+
+				'</h3><button id="deleteButton">Delete</button><button id="queueNextButton">Queue Next</button></li>');
 		});
 	}
-    request.execute(function(response) {
-        var vidId = response.items[0].id.videoId;
-        var vidTitle = response.items[0].snippet.title;
-        var vidThumbnail = '<img src = http://img.youtube.com/vi/'+vidId+'/0.jpg>';
-        if (type === 'searchBox') {
-            playVideo(vidId);
-        } else if (type === 'addBox') {
-            queue.push(new Song(vidId,vidTitle,vidThumbnail));
-            $('#queue').append('<li class="group">'+vidThumbnail+'<h3>'+vidTitle+
-			'</h3><button id="deleteButton">Delete</button><button id="queueNextButton">Queue Next</button></li>');
-        }
-    });
 }
 function search(e) {
     var key = e.which;
@@ -166,6 +178,7 @@ function search(e) {
 function dataAPIReady() {
     $searchField.keypress(search);
     $addField.keypress(search);
+	processPageVars();
 }
 function loadYouTubeIframeAPI () {
   var tag = document.createElement('script');
@@ -265,4 +278,50 @@ function updatePlayerTime(value)
 {
 	player.seekTo(value, true);
 	f();
+}
+function getPageVariable(variable)
+{
+       var query = window.location.search.substring(1);
+       var vars = query.split("&");
+       for (var i=0;i<vars.length;i++) {
+               var pair = vars[i].split("=");
+               if(pair[0] == variable){return pair[1];}
+       }
+       return(false);
+}
+function processPageVars()
+{
+	if (getPageVariable("playlist"))
+		loadPlaylist(getPageVariable("playlist"));
+	else if (getPageVariable("p"))
+		loadPlaylist(getPageVariable("p"));
+	else if (getPageVariable("list"))
+		loadPlaylist(getPageVariable("list"));
+}
+function loadPlaylist(id)
+{
+	var request;
+	request = gapi.client.youtube.playlistitems.list({
+		id: playlistId,
+		part: 'snippet',
+		maxResults: 50,
+	});
+	if (request.items == null || request.items == undefined)
+	{
+		alert("Playlist not found. Are you sure you have the right id?");
+	}
+	else
+	{
+		request.execute(function(response) {
+			for (var i = 0; i < items.length; i++)
+			{
+				var vidId = response.items[i].id.videoId;
+				var vidTitle = response.items[i].snippet.title;
+				var vidThumbnail = '<img src = http://img.youtube.com/vi/'+vidId+'/0.jpg>';
+				queue.push(new Song(vidId,vidTitle,vidThumbnail));
+				$('#queue').append('<li class="group">'+vidThumbnail+'<h3>'+vidTitle+
+				'</h3><button id="deleteButton">Delete</button><button id="queueNextButton">Queue Next</button></li>');
+			}
+		});
+	}
 }
