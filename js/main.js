@@ -10,7 +10,7 @@ var publicAPIKey = 'AIzaSyBeTQ6HWplls742QA_bvODF-vPOFf4nm2U',
 	thumbnail = document.getElementById("thumbnail"),
 	timePassed = document.getElementById("timePassed"),
 	timeLeft = document.getElementById("timeLeft"),
-	volumeButton = document.getElementById("volumeButton");
+	volumeButton = document.getElementById("volumeButton"),
 	lastPlayerState,
 	timeChanger,
 	slider = new Seekbar.Seekbar({
