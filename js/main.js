@@ -35,7 +35,7 @@ var publicAPIKey = 'AIzaSyBeTQ6HWplls742QA_bvODF-vPOFf4nm2U',
 		   },
 		   orientation: "horizontal"
        }),
-	volumeSlider = new Seekbar.Seekbar({
+	/*volumeSlider = new Seekbar.Seekbar({
            renderTo: "#seekbar-container-vertical-red",
            minValue: 0, maxValue: 100,
            valueListener: function (value) {
@@ -53,7 +53,7 @@ var publicAPIKey = 'AIzaSyBeTQ6HWplls742QA_bvODF-vPOFf4nm2U',
 		   {
 		   },
 		   orientation: "vertical"
-       });
+       });*/
 
 function onYouTubeIframeAPIReady() {
     var initialVideoId;
@@ -115,7 +115,7 @@ function onPlayerReady(event) {
 	{
 		volumeButton.className = "fa fa-volume-off fa-2x";
 	}
-	volumeSlider.setValue(event.target.getVolume());
+	//volumeSlider.setValue(event.target.getVolume());
 	timeChanger = setInterval(f, 1);
 }
 function onPlayerStateChange(event) {
