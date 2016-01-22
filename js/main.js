@@ -400,10 +400,12 @@ function setVolume(value)
 	}
 	else if (value > 50)
 	{
+		player.unmute();
 		volumeButton.className = "fa fa-volume-up fa-2x";
 	}
 	else 
 	{
+		player.unmute();
 		volumeButton.className = "fa fa-volume-down fa-2x";
 	}
 }
