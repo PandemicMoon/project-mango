@@ -296,8 +296,11 @@ button:hover {
     bottom: 50px;
     width: 30px;
     height: 115px;
+	right: 600px;
 }
 #seekbar-container-vertical-red .seekbar
 {
 	right: 4px;
+	left: 9.5px;
+    top: 10px;
 }
