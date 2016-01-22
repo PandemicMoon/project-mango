@@ -72,9 +72,9 @@ $.extend(Seekbar.Seekbar.prototype, {
 
         this.renderTo.append(this.el);
 
-        this.area.width = this.el.width();
 		if (this.changeWidth)
-			this.area.height = this.el.height();
+			this.area.width = this.el.width();
+		this.area.height = this.el.height();
         this.area.size = Math.max(this.area.width, this.area.height);
 
         this.elNegative = $('<div class="seekbar-negative" style="position:absolute;z-index:1"></div>');

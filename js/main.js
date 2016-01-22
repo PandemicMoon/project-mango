@@ -14,25 +14,6 @@ var publicAPIKey = 'AIzaSyBeTQ6HWplls742QA_bvODF-vPOFf4nm2U',
 	volumePopUp = document.getElementById("volumePopUp"),
 	lastPlayerState,
 	timeChanger,
-		volumeSlider = new Seekbar.Seekbar({
-           renderTo: "#seekbar-container-vertical-red",
-           minValue: 0, maxValue: 100,
-           valueListener: function (value) {
-				setVolume(value);
-           },
-           thumbColor: '#D82020',
-           negativeColor: '#D82020',
-           positiveColor: '#CCC',
-           value: 0,
-		   barSize: 1,
-		   onDrag: function()
-		   {
-		   },
-		   doneDrag: function()
-		   {
-		   },
-		   orientation: "vertical"
-       }),
 	slider = new Seekbar.Seekbar({
            renderTo: "#seekbar-container-horizontal-red",
            minValue: 0, maxValue: 255,
@@ -55,9 +36,26 @@ var publicAPIKey = 'AIzaSyBeTQ6HWplls742QA_bvODF-vPOFf4nm2U',
 		   orientation: "horizontal",
 		   aWidth: 400,
 		   changeWidth: false
-       });
-	   
-console.log(slider.area.size);
+    }),
+	volumeSlider = new Seekbar.Seekbar({
+        renderTo: "#seekbar-container-vertical-red",
+        minValue: 0, maxValue: 100,
+        valueListener: function (value) {
+			setVolume(value);
+        },
+        thumbColor: '#D82020',
+        negativeColor: '#D82020',
+        positiveColor: '#CCC',
+        value: 0,
+		barSize: 1,
+		onDrag: function()
+		{
+		},
+		doneDrag: function()
+		{
+		},
+		orientation: "vertical"
+    });
 
 function onYouTubeIframeAPIReady() {
     var initialVideoId;
