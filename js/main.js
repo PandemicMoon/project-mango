@@ -1,6 +1,6 @@
 "use strict";
 var publicAPIKey = 'AIzaSyBeTQ6HWplls742QA_bvODF-vPOFf4nm2U',
-    $searchField = $('#searchBox'),
+    $searchField = $('#addPlaylistBox'),
     $addField = $('#addBox'),
     queue = [],
     player,
@@ -12,6 +12,8 @@ var publicAPIKey = 'AIzaSyBeTQ6HWplls742QA_bvODF-vPOFf4nm2U',
 	timeLeft = document.getElementById("timeLeft"),
 	volumeButton = document.getElementById("volumeButton"),
 	volumePopUp = document.getElementById("volumePopUp"),
+	currentDisplay = document.getElementById("current"),
+	searchDisplay = document.getElementById("searchDisplay"),
 	lastPlayerState,
 	timeChanger,
 	slider = new Seekbar.Seekbar({
@@ -54,8 +56,11 @@ var publicAPIKey = 'AIzaSyBeTQ6HWplls742QA_bvODF-vPOFf4nm2U',
 		},
 		orientation: "vertical"
     });
+	
+loadYouTubeIframeAPI();
 
-function onYouTubeIframeAPIReady() {
+function onYouTubeIframeAPIReady() 
+{
     var initialVideoId;
 	
 	if (getPageVariable("video"))
@@ -86,13 +91,16 @@ function onYouTubeIframeAPIReady() {
     }
   });
 }
+
 function f()
 {
 	var currTime = Math.round(player.getCurrentTime());
 	var dur = Math.round(player.getDuration());
 	setTime(currTime, dur);
 }
-function onPlayerReady(event) {
+
+function onPlayerReady(event) 
+{
     event.target.playVideo();
 	playButton.style.display = "none";
     pauseButton.style.display = "inline-block";
@@ -118,7 +126,9 @@ function onPlayerReady(event) {
 	volumeSlider.setValue(event.target.getVolume());
 	timeChanger = setInterval(f, 1);
 }
-function onPlayerStateChange(event) {
+
+function onPlayerStateChange(event) 
+{
     if (event.data === 0 && queue.length > 0) {
         playNextVideoInQueue();
 		lastPlayerState = 1;
@@ -144,7 +154,9 @@ function onPlayerStateChange(event) {
 		lastPlayerState = player.getPlayerState();
 	}
 }
-function playNextVideoInQueue() {
+
+function playNextVideoInQueue() 
+{
     var nextVidID = queue[0].id;
     player.loadVideoById(nextVidID);
 	//player.setPlayBackQuality(player.getAvailableQualityLevels()[0]); //Uncomment if not showing video frame
@@ -153,12 +165,16 @@ function playNextVideoInQueue() {
     queue.shift();
     $('#queue li:first-child').remove();
 } 
-function Song(id, title, thumbnail) {
+
+function Song(id, title, thumbnail) 
+{
     this.id = id;
     this.title = title;
     this.thumbnail = thumbnail;
 }
-function addCurrentlyPlayingVid(e) {
+
+function addCurrentlyPlayingVid(e) 
+{
     var playerVidId = player.B.videoData["video_id"];
     var playerVidTitle = player.B.videoData.title;
     var playerVidThumbnail = '<img src = http://img.youtube.com/vi/'+playerVidId+'/0.jpg>';
@@ -168,17 +184,24 @@ function addCurrentlyPlayingVid(e) {
 		'</h3><button id="deleteButton">Delete</button><button id="queueNextButton">Queue Next</button></li>');
     }
 }
-function removeFromQueue() {
+
+function removeFromQueue() 
+{
     var liToBeDeleted = $(this).closest('li');
     var listPosition = $('li').index(liToBeDeleted);
     queue.remove(listPosition);
     liToBeDeleted.remove();
 }
-function playVideo(videoId) {
+
+function playVideo(videoId) 
+{
     player.loadVideoById(videoId);
 }
-function makeRequest(keyword, type) {
-    if (type === 'searchBox') {
+
+function makeRequest(keyword, type) 
+{
+    if (type === 'addPlaylistBox') 
+	{
         loadPlaylist(keyword);
 	} 
 	else if (type === 'addBox') 
@@ -207,34 +230,43 @@ function makeRequest(keyword, type) {
 		});
 	}
 }
-function search(e) {
+
+function search(e) 
+{
     var key = e.which;
     if (key === 13) {
         makeRequest($(this).val(), this.id);
     }
 }
-function dataAPIReady() {
+
+function dataAPIReady() 
+{
     $searchField.keypress(search);
     $addField.keypress(search);
 	processPageVars();
 }
-function loadYouTubeIframeAPI () {
+
+function loadYouTubeIframeAPI () 
+{
   var tag = document.createElement('script');
   tag.src = "https://www.youtube.com/iframe_api";
   var firstScriptTag = document.getElementsByTagName('script')[0];
   firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 };
-loadYouTubeIframeAPI();
-function init() {
+
+function init() 
+{
     gapi.client.setApiKey(publicAPIKey);
     gapi.client.load('youtube', 'v3').then(dataAPIReady);
 }
+
 // Array Remove - By John Resig (MIT Licensed)
 Array.prototype.remove = function(from, to) {
   var rest = this.slice((to || from) + 1 || this.length);
   this.length = from < 0 ? this.length + from : from;
   return this.push.apply(this, rest);
 };
+
 $(document).ready(function() {
     $(document).keydown(addCurrentlyPlayingVid);
     $('#queue').on('click', '#deleteButton', removeFromQueue);
@@ -255,6 +287,7 @@ $(document).ready(function() {
         $("#val").html(ui.value);
     }
 });
+
 function play()
 {
 	if (player.getPlayerState() === -1, 2)
@@ -327,6 +360,7 @@ function getPageVariable(variable)
        }
        return(false);
 }
+
 function processPageVars()
 {
 	if (getPageVariable("playlist"))
@@ -360,6 +394,7 @@ function loadPlaylist(id)
 		}
 	});
 }
+
 function mute()
 {
 	if (player.isMuted())
@@ -380,14 +415,17 @@ function mute()
 		volumeButton.className = "fa fa-volume-off fa-2x";
 	}
 }
+
 function volumePopUpUp()
 {
 	volumePopUp.style.display = "inline-block";
 }
+
 function volumePopUpDown()
 {
 	volumePopUp.style.display = "none";
 }
+
 function setVolume(value)
 {
 	player.setVolume(value);
@@ -406,4 +444,27 @@ function setVolume(value)
 		player.unMute();
 		volumeButton.className = "fa fa-volume-down fa-2x";
 	}
+}
+
+function iOS() {
+
+  var iDevices = [
+    'iPad Simulator',
+    'iPhone Simulator',
+    'iPod Simulator',
+    'iPad',
+    'iPhone',
+    'iPod'
+  ];
+
+  while (iDevices.length) {
+    if (navigator.platform === iDevices.pop() && !window.MSStream){ return true; }
+  }
+
+  return false;
+}
+
+function switchDisplay()
+{
+	if ()
 }
