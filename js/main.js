@@ -56,7 +56,8 @@ var publicAPIKey = 'AIzaSyBeTQ6HWplls742QA_bvODF-vPOFf4nm2U',
 		},
 		orientation: "vertical"
     });
-	
+
+window.onload = checkiOS();
 loadYouTubeIframeAPI();
 
 function onYouTubeIframeAPIReady() 
@@ -462,4 +463,32 @@ function iOS() {
   }
 
   return false;
+}
+
+function switchDisplay()
+{
+	if (currentDisplay.style.display == "block")
+	{
+		currentDisplay.style.display = "none";
+		searchDisplay.style.display = "block";
+	}
+	else 
+	{	
+		searchDisplay.style.display = "none";
+		currentDisplay.style.display = "block";
+	}
+}
+
+function checkiOS()
+{
+	if (iOS())
+	{
+		showiOSPopUp();
+	}
+}
+
+function showiOSPopUp()
+{
+	document.getElementById('light').style.display='block';
+	document.getElementById('fade').style.display='block';
 }
