@@ -119,8 +119,9 @@ hr {
 	background-color: #C0C8C9;
 	background-image: -webkit-linear-gradient(0deg, #FFF, #C0C8C9, #FFF);
 }
-input[name="search"],
-input[name="add"] {
+input[name="addPlaylist"],
+input[name="addPlaylist"],
+input[name="searchSong"] {
 	outline: none;
 	border: 1px solid #EEE;
 	-webkit-border-radius: 30px;
@@ -135,7 +136,7 @@ input[name="addPlaylist"] {
 	margin-left: 3rem;
 	background: #fff url(../img/add.png) no-repeat 1rem;
 }
-input[name="addSong"] {
+input[name="addPlaylist"] {
 	position: relative;
 	top: 10px;
 	background: #fff url(../img/add.png) no-repeat 1rem;
