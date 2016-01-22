@@ -34,6 +34,8 @@ var publicAPIKey = 'AIzaSyBeTQ6HWplls742QA_bvODF-vPOFf4nm2U',
 				player.playVideo();
 		   },
 		   orientation: "horizontal"
+		   aWidth: 400;
+		   changeWidth: false;
        }),
 	volumeSlider = new Seekbar.Seekbar({
            renderTo: "#seekbar-container-vertical-red",
