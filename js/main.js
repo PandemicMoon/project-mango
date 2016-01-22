@@ -400,7 +400,7 @@ function setVolume(value)
 		volumeButton.className = "fa fa-volume-off fa-2x";
 		player.mute();
 	}
-	else if (volume > 50)
+	else if (value > 50)
 	{
 		volumeButton.className = "fa fa-volume-up fa-2x";
 	}
