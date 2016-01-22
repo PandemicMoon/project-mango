@@ -8,7 +8,7 @@ if(!Seekbar)var Seekbar = {};
 Seekbar.Seekbar = function(config){
     config = config || {};
 
-    var props = ["minValue","maxValue","value", "valueListener","negativeColor","positiveColor","needleSize","barSize","onDrag","doneDrag","orientation"];
+    var props = ["minValue","maxValue","value", "valueListener","negativeColor","positiveColor","needleSize","barSize","onDrag","doneDrag","orientation","aHeight"];
     for(var i=0;i<props.length;i++){
         var key = props[i];
         if(config[key] != undefined)this[key] = config[key];
@@ -24,6 +24,11 @@ Seekbar.Seekbar = function(config){
         }
         this.thumbColor = config.thumbColor;
     }
+	
+	if (config.aHeight != undefined)
+	{
+		areaHeight = aHeight;
+	}
 
     this.render();
 };
