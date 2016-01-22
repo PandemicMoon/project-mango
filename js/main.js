@@ -115,7 +115,7 @@ function onPlayerReady(event) {
 	{
 		volumeButton.className = "fa fa-volume-off fa-2x";
 	}
-	//volumeSlider.setValue(event.target.getVolume());
+	volumeSlider.setValue(event.target.getVolume());
 	timeChanger = setInterval(f, 1);
 }
 function onPlayerStateChange(event) {
