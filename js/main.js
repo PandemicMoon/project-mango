@@ -463,8 +463,3 @@ function iOS() {
 
   return false;
 }
-
-function switchDisplay()
-{
-	if ()
-}

@@ -136,7 +136,7 @@ input[name="addPlaylist"] {
 	margin-left: 3rem;
 	background: #fff url(../img/add.png) no-repeat 1rem;
 }
-input[name="addPlaylist"] {
+input[name="addSong"] {
 	position: relative;
 	top: 10px;
 	background: #fff url(../img/add.png) no-repeat 1rem;
