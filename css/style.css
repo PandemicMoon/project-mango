@@ -250,7 +250,6 @@ button:hover {
 .playControlsInner
 {
 	margin: 0 auto;
-	width: 80rem;
 }
 .playControlsInner i
 {
@@ -296,7 +295,7 @@ button:hover {
     bottom: 50px;
     width: 30px;
     height: 115px;
-	right: 600px;
+	right: 465px;
 }
 #seekbar-container-vertical-red .seekbar
 {
