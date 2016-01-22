@@ -37,7 +37,7 @@ var publicAPIKey = 'AIzaSyBeTQ6HWplls742QA_bvODF-vPOFf4nm2U',
 		   aWidth: 400,
 		   changeWidth: false
     }),
-	volumeSlider = new Seekbar.Seekbar({
+	volumeSlider = new Seekbar2.Seekbar2({
         renderTo: "#seekbar-container-vertical-red",
         minValue: 0, maxValue: 100,
         valueListener: function (value) {
