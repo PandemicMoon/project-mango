@@ -291,7 +291,13 @@ button:hover {
 }
 .volumePopUp
 {
-	position: absolute;
-	z-index: 20;
-	background-color: #777;
+    position: absolute;
+    background-color: #f2f2f5;
+    bottom: 50px;
+    width: 30px;
+    height: 115px;
+}
+#seekbar-container-vertical-red .seekbar
+{
+	right: 4px;
 }

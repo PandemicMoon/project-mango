@@ -54,9 +54,8 @@
 						<div style="display: inline-block; position: relative; top: 50%; transform: translateY(-50%);">
 							<p id="currentlyPlaying" style="display: inline; position: relative; top: 50%; transform: translateY(-50%);"></p>
 						</div>
-						<i id="volumeButton" onclick="mute()" onmouseover="volumePopUpUp()" onmousedown="volumePopDown()" class="fa fa-volume-down fa-2x">
-							<div id="volumePopUp" class="volumePopUp" style=" display: none;"><div id="seekbar-container-vertical-red" style="height: 50px;"></div></div>
-						</i>
+						<i id="volumeButton" onclick="mute()" onmouseover="volumePopUpUp()" class="fa fa-volume-down fa-2x"></i>
+						<div id="volumePopUp" class="volumePopUp" style=" display: none;" onmouseout="volumePopUpDown()"><div id="seekbar-container-vertical-red" style="height: 50px;"></div></div>
 					</div>
 				</div>
 			</div>
