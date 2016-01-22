@@ -33,9 +33,7 @@ var publicAPIKey = 'AIzaSyBeTQ6HWplls742QA_bvODF-vPOFf4nm2U',
 		   {
 				player.playVideo();
 		   },
-		   orientation: "horizontal",
-		   aWidth: 400,
-		   changeWidth: false
+		   orientation: "horizontal"
     }),
 	volumeSlider = new Seekbar2.Seekbar2({
         renderTo: "#seekbar-container-vertical-red",
@@ -400,12 +398,12 @@ function setVolume(value)
 	}
 	else if (value > 50)
 	{
-		player.unmute();
+		player.unMute();
 		volumeButton.className = "fa fa-volume-up fa-2x";
 	}
 	else 
 	{
-		player.unmute();
+		player.unMute();
 		volumeButton.className = "fa fa-volume-down fa-2x";
 	}
 }
