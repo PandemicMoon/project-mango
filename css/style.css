@@ -120,7 +120,7 @@ hr {
 	background-image: -webkit-linear-gradient(0deg, #FFF, #C0C8C9, #FFF);
 }
 input[name="addPlaylist"],
-input[name="addPlaylist"],
+input[name="addSong"],
 input[name="searchSong"] {
 	outline: none;
 	border: 1px solid #EEE;
