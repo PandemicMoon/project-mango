@@ -27,7 +27,7 @@ Seekbar.Seekbar = function(config){
 	
 	if (config.aWidth != undefined)
 	{
-		this.areaWidth = aWidth;
+		this.areaWidth = config.aWidth;
 	}
 
     this.render();
