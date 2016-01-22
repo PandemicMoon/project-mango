@@ -35,6 +35,7 @@ var publicAPIKey = 'AIzaSyBeTQ6HWplls742QA_bvODF-vPOFf4nm2U',
 		   },
 		   orientation: "horizontal"
        });
+	console.log(slider.area.size);
 	/*volumeSlider = new Seekbar.Seekbar({
            renderTo: "#seekbar-container-vertical-red",
            minValue: 0, maxValue: 100,
