@@ -90,16 +90,14 @@ strong {
 	font-weight: 500;
 	color: #A6A6AF;
 }
-
 a {
 	color: #D82020;
 }
-
 /* ELEMENT STYLES */
 .container
 {
 	margin: 0 auto;
-	width: 40rem;
+	width: 46.9%;
 }
 .header {
 	background: rgba(255,255,255,0.94);
@@ -132,17 +130,16 @@ input[name="add"] {
 	padding: 0.5rem 0 0.5rem 3rem;
 	font: 300 1rem "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
-input[name="search"] {
+input[name="addPlaylist"] {
 	width: 24rem;
 	margin-left: 3rem;
-	background: #fff url(../img/search.png) no-repeat 1rem;
-
+	background: #fff url(../img/add.png) no-repeat 1rem;
 }
-input[name="add"] {
+input[name="addSong"] {
 	position: relative;
 	top: 10px;
-	width: 12rem;
 	background: #fff url(../img/add.png) no-repeat 1rem;
+	width: 100%;
 }
 #current,
 #next {
