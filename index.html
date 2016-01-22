@@ -13,7 +13,7 @@
 			<div class="container">
 				<div class="header">
 					<a href="http://pandemicmoon.github.io/project-mango"><h1 id="title">Project Mango</h1></a>
-					<input id="searchBox" name="addPlaylist" spellcheck="false" placeholder="Add songs from a playlist (via playlist id i.e. PLvsTw8JSOwK4P9pBJeDqY5XJ71QUr5PXi)"></input>
+					<input id="addPlaylistBox" name="addPlaylist" spellcheck="false" placeholder="Add songs from a playlist (via playlist id i.e. PLvsTw8JSOwK4P9pBJeDqY5XJ71QUr5PXi)"></input>
 				</div>
 				<hr>
 				<div class="group">
@@ -21,9 +21,19 @@
 						<h2>Currently playing:</h2>
 						<div id="player"></div>
 					</section>
+					<select id="searchDisplay" style="display: none;">
+						<h2>Search:</h2>
+						<p>Search for a different song to add:
+							<br>
+							<input id="searchBox" name="searchSong" spellcheck="false" placeholder="Search for any song"></input>
+						</p>
+						<div id="search-results-container">
+							<ul id="search-results"></ul>
+						</div>
+					</section>
 					<section id="next">
 						<h2>Up next:</h2>
-						<p>Press <strong>control</strong> to add the current song to the queue. Or, search for a different song to add:
+						<p>Press <strong>control</strong> to add the current song to the queue. Or, add a different song:
 							<br>
 							<input id="addBox" name="addSong" spellcheck="false" placeholder="Add any song"></input>
 						</p>
