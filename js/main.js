@@ -221,7 +221,8 @@ function makeRequest(keyword, type)
 				q: keyword,
 				part: 'snippet',
 				maxResults: 50,
-				order: 'relevance'
+				order: 'relevance',
+				type: 'video'
 			});
 			request.execute(function(response) {
 				for (var i = 0; i < response.items.length; i++)
@@ -249,7 +250,8 @@ function makeRequest(keyword, type)
 				q: keyword,
 				part: 'snippet',
 				maxResults: 3,
-				order: 'relevance'
+				order: 'relevance',
+				type: 'video'
 			});
 		}
 		request.execute(function(response) {
