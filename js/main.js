@@ -344,11 +344,16 @@ function backward()
 
 function queueNext()
 {
+	console.log("Original Queue");
+	console.log(queue);
 	var liToBeQueuedNext = $(this).closest('li');
     var listPosition = $('li').index(liToBeQueuedNext);
+	console.log(listPosition);
     var temp = queue[listPosition];
 	queue[listPosition] = queue[0];
 	queue[0] = temp;
+	console.log("Queue:");
+	console.log(queue);
     liToBeQueuedNext.parent().prepend(liToBeQueuedNext);
 }
 
