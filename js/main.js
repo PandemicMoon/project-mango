@@ -346,22 +346,18 @@ function queueNext()
 {
 	console.log("Original Queue");
 	console.log(queue);
-	var liToBeQueuedNext = $(this)/*.closest('li')*/;
-	console.log(liToBeQueuedNext);
-    var listPosition = $('li').index(liToBeQueuedNext);
-	console.log(listPosition);
+	var liToBeQueuedNext = $(this).closest('li');
+    var listPosition = $('#queue').index(liToBeQueuedNext);
     var temp = queue[listPosition];
 	queue[listPosition] = queue[0];
 	queue[0] = temp;
-	console.log("Queue:");
-	console.log(queue);
     liToBeQueuedNext.parent().prepend(liToBeQueuedNext);
 }
 
 function addToQueue()
 {
 	var liToBeAdded = $(this).closest('li');
-    var listPosition = $('li').index(liToBeAdded);
+    var listPosition = $('#searchResults').index(liToBeAdded);
 	console.log("List Position: " + listPosition);
 	console.log("Search Results[listPosition]:");
 	console.log(searchResults[listPosition]);
