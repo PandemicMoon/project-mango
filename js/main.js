@@ -165,6 +165,7 @@ function onPlayerStateChange(event)
 
 function playNextVideoInQueue() 
 {
+	console.log(queue);
     var nextVidID = queue[0].id;
     player.loadVideoById(nextVidID);
 	//player.setPlayBackQuality(player.getAvailableQualityLevels()[0]); //Uncomment if not showing video frame
