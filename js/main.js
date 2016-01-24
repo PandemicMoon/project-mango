@@ -215,6 +215,7 @@ function makeRequest(keyword, type)
 	else if (type == 'searchBox')
 	{
 		document.getElementById("searchResults").innerHTML = "";
+		searchResults = [];
 		if (keyword != "")
 		{
 			request = gapi.client.youtube.search.list({
