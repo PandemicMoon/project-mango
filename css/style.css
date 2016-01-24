@@ -171,7 +171,7 @@ input[name="searchSong"] {
 	color: #A1A1A1;
 	line-height: 130%;
 }
-#queue-container {
+#queueContainer {
 	overflow: auto;
 	height: 330px;
 }
@@ -194,26 +194,26 @@ input[name="searchSong"] {
 	width: 265px;
 	display: inline-block;
 }
-#search-results-container {
+#searchResultsContainer {
 	overflow: auto;
 	height: 330px;
 }
-#search-results li {
+#searchResults li {
 	color: #6F6F6F;
 	border-bottom: 1px solid #F5F5F5;
 	padding: 8px 0;
 }
-#search-results li:hover {
+#searchResults li:hover {
 	background-color: #F5F5F5;
 }
-#search-results li img {
+#searchResults li img {
 	width: 40px;
 	height: 40px;
 	background-color: blue;
 	float: left;
 	margin-right: 5px;
 }
-#search-results li h3 {
+#searchResults li h3 {
 	width: 265px;
 	display: inline-block;
 }
