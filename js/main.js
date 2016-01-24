@@ -347,6 +347,7 @@ function queueNext()
 	console.log("Original Queue");
 	console.log(queue);
 	var liToBeQueuedNext = $(this).closest('li');
+	console.log(liToBeQueuedNext);
     var listPosition = $('li').index(liToBeQueuedNext);
 	console.log(listPosition);
     var temp = queue[listPosition];
