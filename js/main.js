@@ -55,7 +55,8 @@ var publicAPIKey = 'AIzaSyBeTQ6HWplls742QA_bvODF-vPOFf4nm2U',
 		{
 		},
 		orientation: "vertical"
-    });
+    }),
+	iOSPopUpUp = false;
 
 window.onload = checkiOS();
 loadYouTubeIframeAPI();
@@ -145,6 +146,10 @@ function onPlayerStateChange(event)
             pauseButton.style.display = "inline-block";
 			timeChanger = setInterval(f, 500);
 			slider.maxValue = Math.round(player.getDuration());
+			if (iOSPopUpUp)
+			{
+				hideiOSPopUp();
+			}
 	    }
 		else
 		{
@@ -447,7 +452,8 @@ function setVolume(value)
 	}
 }
 
-function iOS() {
+function iOS() 
+{
 
   var iDevices = [
     'iPad Simulator',
@@ -458,8 +464,12 @@ function iOS() {
     'iPod'
   ];
 
-  while (iDevices.length) {
-    if (navigator.platform === iDevices.pop() && !window.MSStream){ return true; }
+  while (iDevices.length) 
+  {
+    if (navigator.platform === iDevices.pop() && !window.MSStream)
+	{ 
+		return true; 
+	}
   }
 
   return false;
@@ -491,4 +501,12 @@ function showiOSPopUp()
 {
 	document.getElementById('light').style.display='block';
 	document.getElementById('fade').style.display='block';
+	iOSPopUpUp = true;
+}
+
+function hideiOSPopUp()
+{
+	document.getElementById('light').style.display='none';
+	document.getElementById('fade').style.display='none';
+	iOSPopUpUp = false;
 }
