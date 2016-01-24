@@ -256,6 +256,17 @@ input[name="searchSong"] {
 	margin-top: 5px;
 	margin-left: 5px;
 }
+#addToQueueButton {
+	background-color: #FFF;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	border: 1px solid #32CD32;
+	color: #32CD32;
+	float: right;
+	margin-top: 5px;
+	margin-left: 5px;
+}
 button:focus {
 	outline: 0;
 }
