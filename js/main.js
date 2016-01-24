@@ -356,10 +356,12 @@ function addToQueue()
 {
 	var liToBeAdded = $(this).closest('li');
     var listPosition = $('li').index(liToBeAdded);
+	console.log(listPosition);
+	console.log(searchResults[listPosition]);
 	queue.push(searchResults[listPosition]);
+	console.log(queue);
 	$('#queue').append('<li class="group">'+searchResults[listPosition].thumbnail+'<h3>'+searchResults[listPosition].title+
 		'</h3><button id="deleteButton">Delete</button><button id="queueNextButton">Queue Next</button></li>');
-	liToBeAdded.remove();
 }
 
 function setTime(secPassedOg, secTotalOg)
