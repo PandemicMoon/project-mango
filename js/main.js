@@ -165,7 +165,7 @@ function onPlayerStateChange(event)
 
 function playNextVideoInQueue() 
 {
-	console.log(queue);
+	logQueue();
     var nextVidID = queue[0].id;
     player.loadVideoById(nextVidID);
 	//player.setPlayBackQuality(player.getAvailableQualityLevels()[0]); //Uncomment if not showing video frame
@@ -346,15 +346,15 @@ function backward()
 
 function queueNext()
 {
-	console.log(queue);
+	logQueue();
 	var liToBeQueuedNext = $(this).closest('li');
     var listPosition = liToBeQueuedNext.index();
 	console.log(listPosition);
-    /*var temp = queue[listPosition];*/
+    var temp = queue[listPosition];
 	queue[listPosition] = queue[0];
-	/*queue[0] = temp;*/
+	queue[0] = temp;
     liToBeQueuedNext.parent().prepend(liToBeQueuedNext);
-	console.log(queue);
+	logQueue();
 }
 
 function addToQueue()
@@ -548,4 +548,14 @@ function hideiOSPopUp()
 	document.getElementById('light').style.display='none';
 	document.getElementById('fade').style.display='none';
 	iOSPopUpUp = false;
+}
+
+function logQueue()
+{
+	console.log("Start queue log:")
+	for (var i = 0; i < queue.length; i++)
+	{
+		console.log(queue[i].title)
+	}
+	console.log("End queue log")
 }
