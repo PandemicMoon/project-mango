@@ -196,7 +196,7 @@ function addCurrentlyPlayingVid(e)
 function removeFromQueue() 
 {
     var liToBeDeleted = $(this).closest('li');
-    var listPosition = $('li').index(liToBeDeleted);
+    var listPosition = liToBeDeleted.index();
     queue.remove(listPosition);
     liToBeDeleted.remove();
 }
@@ -346,13 +346,9 @@ function queueNext()
 {
 	var liToBeQueuedNext = $(this).closest('li');
     var listPosition = liToBeQueuedNext.index();
-	console.log(liToBeQueuedNext);
-	console.log(listPosition);
-	console.log(queue);
     var temp = queue[listPosition];
 	queue[listPosition] = queue[0];
 	queue[0] = temp;
-	console.log(queue);
     liToBeQueuedNext.parent().prepend(liToBeQueuedNext);
 }
 
