@@ -301,7 +301,7 @@ $(document).ready(function() {
     $(document).keydown(addCurrentlyPlayingVid);
     $('#queue').on('click', '#deleteButton', removeFromQueue);
 	$('#queue').on('click', '#queueNextButton', queueNext);
-	$('#searchResults').on('click', '#addToQueueButton' addToQueue);
+	$('#searchResults').on('click', '#addToQueueButton', addToQueue);
 });
 
 function play()
