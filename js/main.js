@@ -344,10 +344,8 @@ function backward()
 
 function queueNext()
 {
-	console.log("Original Queue");
-	console.log(queue);
 	var liToBeQueuedNext = $(this).closest('li');
-    var listPosition = $('#queue').index(liToBeQueuedNext);
+    var listPosition = liToBeQueuedNext.index();
     var temp = queue[listPosition];
 	queue[listPosition] = queue[0];
 	queue[0] = temp;
@@ -357,13 +355,8 @@ function queueNext()
 function addToQueue()
 {
 	var liToBeAdded = $(this).closest('li');
-    var listPosition = $('#searchResults').index(liToBeAdded);
-	console.log("List Position: " + listPosition);
-	console.log("Search Results[listPosition]:");
-	console.log(searchResults[listPosition]);
+    var listPosition = liToBeAdded.index();
 	queue.push(searchResults[listPosition]);
-	console.log("Queue:");
-	console.log(queue);
 	$('#queue').append('<li class="group">'+searchResults[listPosition].thumbnail+'<h3>'+searchResults[listPosition].title+
 		'</h3><button id="deleteButton">Delete</button><button id="queueNextButton">Queue Next</button></li>');
 }
