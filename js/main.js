@@ -215,23 +215,27 @@ function makeRequest(keyword, type)
 	else if (type == 'searchBox')
 	{
 		document.getElementById("searchResults").innerHTML = "";
-		request = gapi.client.youtube.search.list({
-			q: keyword,
-			part: 'snippet',
-			maxResults: 50,
-			order: 'relevance'
-		});
-		request.execute(function(response) {
-			for (var i = 0; i < response.items.length; i++)
-			{
-				var vidId = response.items[i].id.videoId;
-				var vidTitle = response.items[i].snippet.title;
-				var vidThumbnail = '<img src = http://img.youtube.com/vi/'+vidId+'/0.jpg>';
-				searchResults.push(new Song(vidId,vidTitle,vidThumbnail));
-				$('#searchResults').append('<li class="group">'+vidThumbnail+'<h3>'+vidTitle+
-				'</h3><button id="addToQueueButton">Add To Queue</button></li>');
-			}
-		});
+		if (keyword != "")
+		{
+			request = gapi.client.youtube.search.list({
+				q: keyword,
+				part: 'snippet',
+				maxResults: 50,
+				order: 'relevance',
+				type: 'video'
+			});
+			request.execute(function(response) {
+				for (var i = 0; i < response.items.length; i++)
+				{
+					var vidId = response.items[i].id.videoId;
+					var vidTitle = response.items[i].snippet.title;
+					var vidThumbnail = '<img src = http://img.youtube.com/vi/'+vidId+'/0.jpg>';
+					searchResults.push(new Song(vidId,vidTitle,vidThumbnail));
+					$('#searchResults').append('<li class="group">'+vidThumbnail+'<h3>'+vidTitle+
+					'</h3><button id="addToQueueButton">Add To Queue</button></li>');
+				}
+			});
+		}
 	}
 	else if (type === 'addBox') 
 	{
@@ -246,7 +250,8 @@ function makeRequest(keyword, type)
 				q: keyword,
 				part: 'snippet',
 				maxResults: 3,
-				order: 'relevance'
+				order: 'relevance',
+				type: 'video'
 			});
 		}
 		request.execute(function(response) {
@@ -352,7 +357,7 @@ function addToQueue()
 	var liToBeAdded = $(this).closest('li');
     var listPosition = $('li').index(liToBeAdded);
 	queue[queue.length] = searchResults[listPosition];
-    queue.append(liToBeAdded);
+    $('#queue').append(liToBeAdded);
 }
 
 function setTime(secPassedOg, secTotalOg)
