@@ -1,8 +1,10 @@
 "use strict";
 var publicAPIKey = 'AIzaSyBeTQ6HWplls742QA_bvODF-vPOFf4nm2U',
-    $searchField = $('#addPlaylistBox'),
+    $searchPlaylistField = $('#addPlaylistBox'),
+	$searchField = $('#searchBox'),
     $addField = $('#addBox'),
     queue = [],
+	searchResults = [],
     player,
 	playButton = document.getElementById("playButton"),
 	pauseButton = document.getElementById("pauseButton"),
@@ -209,7 +211,28 @@ function makeRequest(keyword, type)
     if (type === 'addPlaylistBox') 
 	{
         loadPlaylist(keyword);
-	} 
+	}
+	else if (type == 'searchBox')
+	{
+		document.getElementById("searchResults").innerHTML = "";
+		request = gapi.client.youtube.search.list({
+			q: keyword,
+			part: 'snippet',
+			maxResults: 50,
+			order: 'relevance'
+		});
+		request.execute(function(response) {
+			for (var i = 0; i < response.items.length)
+			{
+				var vidId = response.items[i].id.videoId;
+				var vidTitle = response.items[i].snippet.title;
+				var vidThumbnail = '<img src = http://img.youtube.com/vi/'+vidId+'/0.jpg>';
+				searchResults.push(new Song(vidId,vidTitle,vidThumbnail));
+				$('#searchResults').append('<li class="group">'+vidThumbnail+'<h3>'+vidTitle+
+				'</h3><button id="addToQueueButton">Add To Queue</button></li>');
+			}
+		});
+	}
 	else if (type === 'addBox') 
 	{
 		var request;
@@ -247,6 +270,7 @@ function search(e)
 
 function dataAPIReady() 
 {
+	$searchPlaylistField.keypress(search);
     $searchField.keypress(search);
     $addField.keypress(search);
 	processPageVars();
@@ -277,21 +301,7 @@ $(document).ready(function() {
     $(document).keydown(addCurrentlyPlayingVid);
     $('#queue').on('click', '#deleteButton', removeFromQueue);
 	$('#queue').on('click', '#queueNextButton', queueNext);
-	$("#mediaProgressBar").slider(
-    {
-        min: 0,
-        max: 100,
-        step: 1,
-        change: showValue
-
-    });
-    $("#update").click(function () {
-        $("#slider").slider("option", "value", $("#seekTo").val());
-
-    });
-    function showValue(event, ui) {
-        $("#val").html(ui.value);
-    }
+	$('#searchResults').on('click', '#addToQueueButton' addToQueue);
 });
 
 function play()
@@ -303,6 +313,7 @@ function play()
         pauseButton.style.display = "inline-block";
 	}
 }
+
 function pause()
 {
 	if (player.getPlayerState() === 1)
@@ -312,17 +323,20 @@ function pause()
         playButton.style.display = "inline-block";
 	}
 }
+
 function forward()
 {
 	if (queue.length > 0) {
         playNextVideoInQueue();
     }
 }
+
 function backward()
 {
 	player.seekTo(0, true);
 	slider.setValue(0);
 }
+
 function queueNext()
 {
 	var liToBeQueuedNext = $(this).closest('li');
@@ -332,6 +346,15 @@ function queueNext()
 	queue[0] = temp;
     liToBeQueuedNext.parent().prepend(liToBeQueuedNext);
 }
+
+function addToQueue()
+{
+	var liToBeAdded = $(this).closest('li');
+    var listPosition = $('li').index(liToBeAdded);
+	queue[queue.length] = searchResults[listPosition];
+    queue.append(liToBeAdded);
+}
+
 function setTime(secPassedOg, secTotalOg)
 {
 	var minPassed = Math.floor(secPassedOg / 60);
@@ -348,14 +371,18 @@ function setTime(secPassedOg, secTotalOg)
 	
 	slider.setValue(secPassedOg);
 }
-function str_pad_left(string,pad,length) {
+
+function str_pad_left(string,pad,length) 
+{
     return (new Array(length+1).join(pad)+string).slice(-length);
 }
+
 function updatePlayerTime(value)
 {
 	player.seekTo(value, true);
 	f();
 }
+
 function getPageVariable(variable)
 {
        var query = window.location.search.substring(1);
@@ -376,6 +403,7 @@ function processPageVars()
 	else if (getPageVariable("list"))
 		loadPlaylist(getPageVariable("list"));
 }
+
 function loadPlaylist(id)
 {
 	var request;
