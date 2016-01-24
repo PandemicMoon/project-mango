@@ -361,6 +361,8 @@ function addToQueue()
 	queue.push(searchResults[listPosition]);
 	$('#queue').append('<li class="group">'+searchResults[listPosition].thumbnail+'<h3>'+searchResults[listPosition].title+
 		'</h3><button id="deleteButton">Delete</button><button id="queueNextButton">Queue Next</button></li>');
+	console.log("Queue at end of addToQueue");
+	console.log(queue);
 }
 
 function setTime(secPassedOg, secTotalOg)
