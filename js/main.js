@@ -222,7 +222,7 @@ function makeRequest(keyword, type)
 			order: 'relevance'
 		});
 		request.execute(function(response) {
-			for (var i = 0; i < response.items.length)
+			for (var i = 0; i < response.items.length; i++)
 			{
 				var vidId = response.items[i].id.videoId;
 				var vidTitle = response.items[i].snippet.title;
