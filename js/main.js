@@ -347,9 +347,10 @@ function queueNext()
 	console.log(queue);
 	var liToBeQueuedNext = $(this).closest('li');
     var listPosition = liToBeQueuedNext.index();
-    /*var temp = queue[listPosition];
+	console.log(listPosition);
+    /*var temp = queue[listPosition];*/
 	queue[listPosition] = queue[0];
-	queue[0] = temp;*/
+	/*queue[0] = temp;*/
     liToBeQueuedNext.parent().prepend(liToBeQueuedNext);
 	console.log(queue);
 }
