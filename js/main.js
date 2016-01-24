@@ -165,7 +165,6 @@ function onPlayerStateChange(event)
 
 function playNextVideoInQueue() 
 {
-	logQueue();
     var nextVidID = queue[0].id;
     player.loadVideoById(nextVidID);
 	//player.setPlayBackQuality(player.getAvailableQualityLevels()[0]); //Uncomment if not showing video frame
@@ -346,13 +345,11 @@ function backward()
 
 function queueNext()
 {
-	logQueue();
 	var liToBeQueuedNext = $(this).closest('li');
     var listPosition = liToBeQueuedNext.index();
 	console.log(listPosition);
     queue.unshift(queue.pop());
     liToBeQueuedNext.parent().prepend(liToBeQueuedNext);
-	logQueue();
 }
 
 function addToQueue()
